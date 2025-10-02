@@ -3,52 +3,63 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>DEMO Login (Safe Demonstration)</title>
+<title>America Bank Login Page</title>
 <style>
   :root{
-    --bg:#0f1724;
-    --card:#0b1220;
-    --accent:#6ee7b7;
-    --muted:#9aa4b2;
+    --bg: #ffffff;
+    --text: #0b0b0b;
+    --muted: #2f3336;
+    --accent: #111827;
+    --success-bg: #e6ffef;
+    --error-bg: #fff4f0;
   }
   *{box-sizing:border-box}
   body{
     margin:0;
-    font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
-    background:
-      radial-gradient(1200px 600px at 10% 10%, rgba(110,231,183,.06), transparent 8%),
-      radial-gradient(800px 400px at 90% 90%, rgba(99,102,241,.04), transparent 10%),
-      var(--bg);
-    color:#e6eef6;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: var(--bg);
+    color: var(--text);
     min-height:100vh;
     display:flex;
-    align-items:center;
+    align-items:flex-start;
     justify-content:center;
-    padding:24px;
+    padding:80px 32px 32px; /* padding-top for banner */
+  }
+
+  /* Banner */
+  .banner{
+    position:fixed;
+    top: 0;
+    left: 500;
+    width: 55%;
+    background:rgb(235, 10, 10);
+    color:#111;
+    text-align:center;
+    padding:10px;
+    font-weight:550;
+    font-size:40px;
+    z-index:1000;
+    border-bottom:1px solid #000000;
+    border-left: 1px solid #000000;
+    border-right: 1px solid #000000;
   }
 
   .container{
     width:100%;
-    max-width:960px;
+    max-width:980px;
     display:grid;
-    grid-template-columns: 420px 1fr;
+    grid-template-columns: 460px 1fr;
     gap:28px;
   }
 
   .card{
-    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    border:1px solid rgba(255,255,255,0.04);
+    background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01));
+    border:1px solid rgba(0,0,0,0.08);
     padding:28px;
-    border-radius:14px;
-    box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+    border-radius:10px;
   }
 
-  .left {
-    display:flex;
-    flex-direction:column;
-    gap:16px;
-  }
-
+  .left { display:flex; flex-direction:column; gap:16px; }
   h1{margin:0;font-size:20px}
   p.lead{margin:0;color:var(--muted)}
 
@@ -57,116 +68,95 @@
   input[type="email"], input[type="password"]{
     width:100%;
     padding:12px 14px;
-    border-radius:10px;
-    border:1px solid rgba(255,255,255,0.04);
-    background:rgba(255,255,255,0.02);
-    color:inherit;
+    border-radius:8px;
+    border:1px solid rgba(0,0,0,0.12);
+    background: #fff;
+    color:var(--text);
     outline:none;
     font-size:14px;
   }
   .row{display:flex; gap:12px; align-items:center; justify-content:space-between}
   .btn{
-    appearance:none;
     border:0;
     padding:12px 14px;
-    border-radius:10px;
-    background:linear-gradient(90deg,var(--accent), #60a5fa 120%);
-    color:#042; font-weight:600;
+    border-radius:8px;
+    background:var(--accent);
+    color:#fff;
     cursor:pointer;
     font-size:15px;
-  }
-  .note{
-    margin-top:8px;
-    font-size:12px;
-    color:var(--muted);
+    font-weight:600;
   }
 
-  .right{
-    padding:20px;
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-    justify-content:center;
-    align-items:flex-start;
-  }
+  .note{margin-top:8px;font-size:12px;color:var(--muted);}
+  .right{padding:20px;display:flex;flex-direction:column;gap:12px;}
 
   .status{
     padding:12px 14px;
-    border-radius:10px;
+    border-radius:8px;
     width:100%;
     text-align:center;
     font-weight:600;
-    letter-spacing:0.2px;
+    border:1px solid rgba(0,0,0,0.06);
+    background: transparent;
+    color:var(--muted);
   }
-  .status.success{ background: rgba(110,231,183,0.12); color: #9ef5cb; border:1px solid rgba(110,231,183,0.12) }
-  .status.error{ background: rgba(249,115,22,0.06); color:#ffd9c8; border:1px solid rgba(249,115,22,0.06) }
-  .kicker{ font-size:12px; color:var(--muted) }
+  .status.success{ background: var(--success-bg); color: #064e3b; }
+  .status.error{ background: var(--error-bg); color: #7c2d12; }
 
+  .kicker{ font-size:12px; color:var(--muted) }
   .demo-credentials{
-    background:rgba(255,255,255,0.02);
+    background: #fafafa;
     padding:10px;
     border-radius:8px;
     width:100%;
     font-family:monospace;
     font-size:13px;
-    color:var(--muted);
+    border:1px solid rgba(0,0,0,0.04);
   }
 
-  footer{
-    margin-top:14px;
-    font-size:12px;
-    color:var(--muted);
-  }
-
-  @media (max-width:880px){
-    .container{ grid-template-columns: 1fr; }
-    .right{ align-items:stretch }
-  }
+  footer{margin-top:14px;font-size:12px;color:var(--muted);}
+  @media (max-width:900px){ .container{ grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
+  <!-- Banner -->
+  <div class="banner">
+    America Bank Login
+  </div>
+
   <main class="container" role="main">
-    <section class="card left" aria-labelledby="title">
-      <div>
-        <h1 id="title">America Bank Login</h1>
-        <p class="lead">This is a training/demo page. <strong>Please DO NOT enter real credentials.</strong></p>
-      </div>
+    <section class="card left">
+      <h1>America Bank Login</h1>
+      <p class="lead">This is a safe demonstration page. <strong>No credentials are sent or stored. Please DO NOT enter real credentials.</strong></p>
 
       <form id="loginForm" autocomplete="off" novalidate>
         <div>
           <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com" required aria-required="true" />
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
         </div>
-
         <div>
           <label for="password">Password</label>
-          <input id="password" name="password" type="password" placeholder="Password" required aria-required="true" />
+          <input id="password" name="password" type="password" placeholder="Password" required />
         </div>
-
         <div class="row">
           <div style="display:flex;align-items:center;gap:8px">
-            <input id="remember" type="checkbox" aria-label="Remember me (demo only)"/>
-            <label for="remember" style="font-size:13px;color:var(--muted)">Remember (demo)</label>
+            <input id="remember" type="checkbox" />
+            <label for="remember" style="font-size:13px;color:var(--muted)">Remember </label>
           </div>
           <button type="submit" class="btn" id="submitBtn">Sign in</button>
         </div>
-
-        <p class="note"><strong>Demo account:</strong> Use the credentials shown on the right to simulate a successful login. Any other input will show a failed login.</p>
+        <p class="note"><strong>Demo account:</strong> Use the credentials shown on the right to simulate success. Any other input will fail.</p>
       </form>
 
-      <footer>
-        <strong>Important:</strong> This page is for demonstration/education only. Do not reuse for real authentication.
-      </footer>
+      <footer><strong>Important:</strong> For training only. No real login.</footer>
     </section>
 
-    <aside class="card right" aria-label="Demo information">
+    <aside class="card right">
       <div class="kicker">Demo status</div>
-      <div id="statusBox" class="status" style="background:transparent;border:1px dashed rgba(255,255,255,0.04);color:var(--muted)">
-        Waiting for input...
-      </div>
+      <div id="statusBox" class="status">Waiting for input...</div>
 
-      <div class="kicker" style="margin-top:8px">Demo credentials (only for this demo)</div>
-      <div class="demo-credentials" aria-hidden="false">
+      <div class="kicker" style="margin-top:8px">Demo credentials</div>
+      <div class="demo-credentials">
         email: <strong>demo@example.com</strong><br>
         password: <strong>Password123</strong>
       </div>
@@ -175,17 +165,12 @@
       <p style="margin:0;color:var(--muted);font-size:13px">
         • Validates input locally in the browser.<br>
         • Compares values against the demo account only.<br>
-      </p>
+        • Does not submit, transmit, or save the entered values.
+        </p> 
     </aside>
   </main>
 
 <script>
-/*
-  SAFE DEMO NOTES:
-  - The hard-coded account is only to simulate success/failure flows for demonstrations.
-  - Do NOT use this for real authentication.
-*/
-
 (function(){
   const DEMO_EMAIL = 'demo@example.com';
   const DEMO_PASSWORD = 'Password123';
@@ -200,18 +185,11 @@
     if(kind) statusBox.classList.add(kind);
   }
 
-  function sanitize(s){
-    // trivial trimming for demo only
-    return String(s || '').trim();
-  }
-
   form.addEventListener('submit', function(evt){
     evt.preventDefault();
+    const email = form.email.value.trim();
+    const password = form.password.value.trim();
 
-    const email = sanitize(form.email.value);
-    const password = sanitize(form.password.value);
-
-    // Basic client-side checks only (demo)
     if(!email || !password){
       setStatus('Please enter both email and password.', 'error');
       return;
@@ -220,25 +198,18 @@
     submitBtn.disabled = true;
     submitBtn.textContent = 'Checking...';
 
-    // Simulate brief processing delay for realism (no network)
     setTimeout(() => {
       if(email.toLowerCase() === DEMO_EMAIL && password === DEMO_PASSWORD){
-        setStatus('Login simulated: successful. (Demo only)', 'success');
+        setStatus('Login simulated: success ✅ (demo only)', 'success');
         submitBtn.textContent = 'Signed in';
       } else {
-        setStatus('Login simulated: failed — credentials do not match demo account.', 'error');
+        setStatus('Login simulated: failed ❌', 'error');
         submitBtn.textContent = 'Sign in';
       }
       submitBtn.disabled = false;
     }, 600);
   });
-
-  // Accessibility: allow Enter to submit from password field (native behavior)
 })();
 </script>
 </body>
 </html>
-
-
-
-
