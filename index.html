@@ -5,13 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Bank of America Login Page</title>
 <style>
-  :root{
+  :root {
     --bg: #ffffff;
     --text: #0b0b0b;
     --muted: #2f3336;
     --accent: #111827;
-    --success-bg: #e6ffef;
-    --error-bg: #fff4f0;
+    --overlay: rgba(0,0,0,0.4);
   }
 
   * { box-sizing: border-box; }
@@ -25,10 +24,9 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding: 100px 16px 32px; /* more padding-top for banner */
+    padding: 100px 16px 32px;
   }
 
-  /* Banner */
   .banner {
     position: fixed;
     top: 0;
@@ -44,23 +42,241 @@
     border-bottom: 1px solid #000000;
   }
 
-  .container {
-    width: 100%;
-    max-width: 980px;
-    display: grid;
-    grid-template-columns: 460px 1fr;
-    gap: 28px;
-  }
-
   .card {
     background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01));
     border: 1px solid rgba(0,0,0,0.08);
     padding: 28px;
     border-radius: 10px;
+    max-width: 420px;
+    width: 100%;
   }
 
-  .left { display: flex; flex-direction: column; gap: 16px; }
   h1 { margin: 0; font-size: 22px; }
+  p.lead { margin: 0; color: var(--muted); font-size: 15px; }
+
+  form { margin-top: 6px; display: flex; flex-direction: column; gap: 12px; }
+  label { font-size: 13px; color: var(--muted); }
+
+  input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.12);
+    background: #fff;
+    color: var(--text);
+    outline: none;
+    font-size: 15px;
+  }
+
+  .row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    border: 0;
+    padding: 12px 20px;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .forgot {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 10px;
+  }
+  .forgot a {
+    font-size: 13px;
+    color: #0066cc;
+    text-decoration: none;
+  }
+  .forgot a:hover {
+    text-decoration: underline;
+  }
+
+  footer { margin-top: 14px; font-size: 12px; color: var(--muted); text-align: center; }
+
+  /* Modal styling */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--overlay);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .modal {
+    background: #fff;
+    padding: 24px;
+    border-radius: 10px;
+    max-width: 360px;
+    width: 90%;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    animation: slideUp 0.3s ease;
+  }
+
+  .modal h2 {
+    margin: 0 0 10px;
+    font-size: 20px;
+  }
+
+  .modal p {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .modal input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  .modal .actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+
+  .close-btn, .modal .btn {
+    cursor: pointer;
+  }
+
+  .close-btn {
+    background: #e5e5e5;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+  @keyframes slideUp { from {transform: translateY(20px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+
+  @media (max-width: 600px) {
+    body { padding: 80px 12px 24px; }
+    .card { padding: 20px; }
+    h1 { font-size: 20px; }
+    .banner { font-size: 1.5rem; padding: 10px; }
+  }
+</style>
+</head>
+<body>
+  <div class="banner">Bank of America Login</div>
+
+  <main class="card" role="main">
+    <h1>Bank of America Login</h1>
+    <p class="lead">
+      This is a safe demonstration page. <strong>No credentials are sent or stored. Please DO NOT enter real credentials.</strong>
+    </p>
+
+    <form id="loginForm" autocomplete="off" novalidate>
+      <div>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required />
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="Password" required />
+      </div>
+      <div class="row">
+        <div style="display:flex;align-items:center;gap:8px">
+          <input id="remember" type="checkbox" />
+          <label for="remember" style="font-size:13px;color:var(--muted)">Remember</label>
+        </div>
+        <button type="submit" class="btn" id="submitBtn">Sign in</button>
+      </div>
+
+      <div class="forgot">
+        <a href="#" id="forgotUsernameLink">Forgot username?</a>
+        <a href="#" id="forgotPasswordLink">Forgot password?</a>
+      </div>
+    </form>
+
+    <footer><strong>Important:</strong> For training only. No real login.</footer>
+  </main>
+
+  <!-- Forgot Username Modal -->
+  <div id="forgotUsernameModal" class="modal-overlay">
+    <div class="modal">
+      <h2>Forgot Username</h2>
+      <p>Enter your registered email address and we’ll send your username.</p>
+      <input type="email" id="forgotUsernameEmail" placeholder="you@example.com">
+      <div class="actions">
+        <button class="close-btn" data-close>Cancel</button>
+        <button class="btn" id="submitForgotUsername">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Forgot Password Modal -->
+  <div id="forgotPasswordModal" class="modal-overlay">
+    <div class="modal">
+      <h2>Forgot Password</h2>
+      <p>Enter your username or email to reset your password.</p>
+      <input type="text" id="forgotPasswordInput" placeholder="Username or email">
+      <div class="actions">
+        <button class="close-btn" data-close>Cancel</button>
+        <button class="btn" id="submitForgotPassword">Submit</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+document.getElementById('loginForm').addEventListener('submit', e => {
+  e.preventDefault();
+  alert('Demo only — no credentials are processed.');
+});
+
+// Utility to open/close modals
+const openModal = id => document.getElementById(id).style.display = 'flex';
+const closeModals = () => document.querySelectorAll('.modal-overlay')
+  .forEach(m => m.style.display = 'none');
+
+// Event listeners for modal links
+document.getElementById('forgotUsernameLink').addEventListener('click', e => {
+  e.preventDefault();
+  openModal('forgotUsernameModal');
+});
+document.getElementById('forgotPasswordLink').addEventListener('click', e => {
+  e.preventDefault();
+  openModal('forgotPasswordModal');
+});
+
+// Close buttons
+document.querySelectorAll('[data-close]').forEach(btn => {
+  btn.addEventListener('click', closeModals);
+});
+
+// Modal submit buttons
+document.getElementById('submitForgotUsername').addEventListener('click', () => {
+  alert('Demo: A username recovery link would be sent to your email.');
+  closeModals();
+});
+
+document.getElementById('submitForgotPassword').addEventListener('click', () => {
+  alert('Demo: A password reset link would be sent.');
+  closeModals();
+});
+</script>
+</body>
+</html>
   p.lead { margin: 0; color: var(--muted); font-size: 15px; }
 
   form { margin-top: 6px; display: flex; flex-direction: column; gap: 12px; }
@@ -241,4 +457,5 @@
 </script>
 </body>
 </html>
+
 
