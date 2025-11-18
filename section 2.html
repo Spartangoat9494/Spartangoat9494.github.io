@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security+ SY0-701 Study Guide - Section 2.0</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        nav {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .nav-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #2980b9;
+        }
+
+        .nav-btn.active {
+            background: #e74c3c;
+        }
+
+        .nav-btn.completed {
+            background: #27ae60;
+        }
+
+        .nav-btn.completed::after {
+            content: ' ✓';
+        }
+
+        .home-btn {
+            background: #e74c3c;
+            color: white;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+
+        .home-btn:hover {
+            background: #c0392b;
+        }
+
+        .content-wrapper {
+            margin-top: 220px;
+            padding: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section {
+            display: none;
+            background: #2d2d2d;
+            color: #e0e0e0;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            animation: fadeIn 0.3s;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: #64b5f6;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #404040;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: #64b5f6;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        h4 {
+            color: #81c784;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .important, .note, .exam-tip {
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid;
+            border-radius: 5px;
+        }
+
+        .important {
+            border-color: #ef5350;
+            background: #3d2525;
+        }
+
+        .note {
+            border-color: #42a5f5;
+            background: #1e3a5f;
+        }
+
+        .exam-tip {
+            border-color: #ffa726;
+            background: #3d2f1f;
+        }
+
+        .important strong, .note strong, .exam-tip strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: #1a1a1a;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border: 1px solid #404040;
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background: #252525;
+        }
+
+        code {
+            background: #3a3a3a;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #a5d6a7;
+        }
+
+        .mark-complete-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+            float: right;
+            margin-bottom: 1rem;
+        }
+
+        .mark-complete-btn:hover {
+            background: #229954;
+        }
+
+        .mark-complete-btn.completed {
+            background: #95a5a6;
+        }
+
+        .mark-complete-btn.completed::before {
+            content: '✓ ';
+        }
+
+        .section-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 2px solid #404040;
+            clear: both;
+        }
+
+        .section-nav button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .section-nav button:hover:not(:disabled) {
+            background: #2980b9;
+        }
+
+        .section-nav button:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                margin-top: 260px;
+                padding: 1rem;
+            }
+
+            .nav-buttons {
+                font-size: 0.8rem;
+            }
+
+            .nav-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .home-btn {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Load completion status from localStorage
+        function loadCompletionStatus() {
+            const completed = JSON.parse(localStorage.getItem('section2_completed') || '[]');
+            completed.forEach(index => {
+                const btn = document.querySelector(`button[onclick="showSection(${index})"]`);
+                if (btn) btn.classList.add('completed');
+                
+                const markBtn = document.getElementById(`section-${index}`)?.querySelector('.mark-complete-btn');
+                if (markBtn) {
+                    markBtn.classList.add('completed');
+                    markBtn.textContent = 'Completed';
+                }
+            });
+        }
+
+        // Show specific section
+        function showSection(index) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all nav buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(`section-${index}`).classList.add('active');
+            
+            // Add active class to clicked button
+            document.querySelectorAll('.nav-btn')[index].classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Toggle completion status
+        function toggleComplete(index) {
+            const completed = JSON.parse(localStorage.getItem('section2_completed') || '[]');
+            const navBtn = document.querySelector(`button[onclick="showSection(${index})"]`);
+            const markBtn = document.getElementById(`section-${index}`).querySelector('.mark-complete-btn');
+            
+            if (completed.includes(index)) {
+                // Remove from completed
+                const newCompleted = completed.filter(i => i !== index);
+                localStorage.setItem('section2_completed', JSON.stringify(newCompleted));
+                navBtn.classList.remove('completed');
+                markBtn.classList.remove('completed');
+                markBtn.textContent = 'Mark as Complete';
+            } else {
+                // Add to completed
+                completed.push(index);
+                localStorage.setItem('section2_completed', JSON.stringify(completed));
+                navBtn.classList.add('completed');
+                markBtn.classList.add('completed');
+                markBtn.textContent = 'Completed';
+            }
+        }
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadCompletionStatus();
+        });
+    </script>
+
+    <nav>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <div>
+                <h1>Security+ SY0-701 Study Guide</h1>
+                <p><strong>Section 2.0: Threats, Vulnerabilities & Mitigations</strong></p>
+            </div>
+            <a href="./index.html" class="home-btn">🏠 Study Hub</a>
+        </div>
+        <div class="nav-buttons">
+            <button class="nav-btn active" onclick="showSection(0)">Overview</button>
+            <button class="nav-btn" onclick="showSection(1)">2.1 Threat Actors</button>
+            <button class="nav-btn" onclick="showSection(2)">2.2 Attack Vectors</button>
+            <button class="nav-btn" onclick="showSection(3)">2.3 Malware Types</button>
+            <button class="nav-btn" onclick="showSection(4)">2.4 Vulnerabilities</button>
+            <button class="nav-btn" onclick="showSection(5)">2.5 Mitigations</button>
+        </div>
+    </nav>
+
+    <div class="content-wrapper">
+        <!-- Section 0: Overview -->
+        <div class="section active" id="section-0">
+            <button class="mark-complete-btn" onclick="toggleComplete(0)">Mark as Complete</button>
+            <h2>2.0 Threats, Vulnerabilities & Mitigations</h2>
+            
+            <p>This section covers the landscape of cybersecurity threats, the actors behind them, various attack vectors, types of malware, system vulnerabilities, and the countermeasures used to protect against these risks.</p>
+            
+            <div class="important">
+                <strong>Important</strong>
+                <p>Understanding threats and vulnerabilities is fundamental to implementing effective security controls. This section represents approximately 22% of the Security+ exam.</p>
+            </div>
+
+            <h3>What You'll Learn</h3>
+            <ul>
+                <li>👤 Threat Actors - Motivations, capabilities, and characteristics of different attackers</li>
+                <li>🎯 Attack Vectors - Methods and pathways used to compromise systems</li>
+                <li>🦠 Malware Types - Various malicious software and their behaviors</li>
+                <li>🔓 Vulnerabilities - Weaknesses in systems, processes, and human factors</li>
+                <li>🛡️ Mitigations - Security controls and countermeasures to protect against threats</li>
+            </ul>
+
+            <div class="note">
+                <strong>Study Tip</strong>
+                <p>Focus on understanding how different threats exploit specific vulnerabilities and which mitigations are most effective for each scenario.</p>
+            </div>
+
+            <div class="section-nav">
+                <button disabled>← Previous</button>
+                <button onclick="showSection(1)">Next →</button>
+            </div>
+        </div>
+
+        <!-- Section 1: 2.1 Threat Actors -->
+        <div class="section" id="section-1">
+            <button class="mark-complete-btn" onclick="toggleComplete(1)">Mark as Complete</button>
+            <h2>2.1 Threat Actors</h2>
+            
+            <p>Threat actors are individuals or groups responsible for security incidents. Understanding their motivations, capabilities, and characteristics helps in developing appropriate defenses.</p>
+            
+            <h3>Types of Threat Actors</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Motivation</th>
+                        <th>Resources</th>
+                        <th>Typical Targets</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Nation-State</strong></td>
+                        <td>Political, economic, military advantage</td>
+                        <td>Extensive (government funding)</td>
+                        <td>Critical infrastructure, government systems, intellectual property</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Organized Crime</strong></td>
+                        <td>Financial gain</td>
+                        <td>High (professional operations)</td>
+                        <td>Financial institutions, healthcare, retail</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hacktivists</strong></td>
+                        <td>Political/social ideology</td>
+                        <td>Variable</td>
+                        <td>Government websites, corporations, political organizations</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Insiders</strong></td>
+                        <td>Revenge, financial gain, ideology</td>
+                        <td>Legitimate access</td>
+                        <td>Employer systems, sensitive data</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Script Kiddies</strong></td>
+                        <td>Curiosity, notoriety</td>
+                        <td>Low (pre-built tools)</td>
+                        <td>Low-hanging fruit, poorly secured systems</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Advanced Persistent Threats (APTs)</h3>
+            <p>Sophisticated, long-term campaigns typically associated with nation-states:</p>
+            <ul>
+                <li><strong>Characteristics:</strong> Stealthy, persistent, well-funded, targeted</li>
+                <li><strong>Objectives:</strong> Espionage, intellectual property theft, sabotage</li>
+                <li><strong>Examples:</strong> APT28 (Fancy Bear), APT29 (Cozy Bear)</li>
+            </ul>
+            
+            <h3>Insider Threats</h3>
+            <p>One of the most dangerous threat types due to legitimate access:</p>
+            <ul>
+                <li><strong>Malicious Insiders:</strong> Intentional harm (disgruntled employees)</li>
+                <li><strong>Negligent Insiders:</strong> Unintentional harm (poor security practices)</li>
+                <li><strong>Compromised Insiders:</strong> Credentials stolen by external attackers</li>
+            </ul>
+
+            <div class="exam-tip">
+                <strong>Exam Tip</strong>
+                <p>Be prepared to match threat actor types with their characteristics, motivations, and typical targets in scenario-based questions.</p>
+            </div>
+
+            <div class="section-nav">
+                <button onclick="showSection(0)">← Previous</button>
+                <button onclick="showSection(2)">Next →</button>
+            </div>
+        </div>
+
+        <!-- Section 2: 2.2 Attack Vectors -->
+        <div class="section" id="section-2">
+            <button class="mark-complete-btn" onclick="toggleComplete(2)">Mark as Complete</button>
+            <h2>2.2 Attack Vectors</h2>
+            
+            <p>Attack vectors are the pathways or methods that threat actors use to gain unauthorized access to systems or networks.</p>
+            
+            <h3>Common Attack Vectors</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Vector</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Phishing</strong></td>
+                        <td>Deceptive emails/messages to trick users</td>
+                        <td>Fake login page for credential theft</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Malvertising</strong></td>
+                        <td>Malicious code in online advertisements</td>
+                        <td>Compromised ad networks delivering malware</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Watering Hole</strong></td>
+                        <td>Compromising frequently visited websites</td>
+                        <td>Industry-specific site infected with exploit kit</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Supply Chain</strong></td>
+                        <td>Attacking through third-party vendors</td>
+                        <td>Compromised software updates</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Zero-Day</strong></td>
+                        <td>Exploiting unknown vulnerabilities</td>
+                        <td>Attack before vendor patch available</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Social Engineering Attacks</h3>
+            <ul>
+                <li><strong>Phishing:</strong> Mass emails pretending to be legitimate
+                    <ul>
+                        <li><strong>Spear Phishing:</strong> Targeted at specific individuals</li>
+                        <li><strong>Whaling:</strong> Targeting high-level executives</li>
+                        <li><strong>Vishing:</strong> Voice call phishing</li>
+                        <li><strong>Smishing:</strong> SMS/text message phishing</li>
+                    </ul>
+                </li>
+                <li><strong>Pretexting:</strong> Creating false scenarios to obtain information</li>
+                <li><strong>Baiting:</strong> Leaving malware-infected devices in public places</li>
+                <li><strong>Quid Pro Quo:</strong> Offering something in exchange for information</li>
+                <li><strong>Tailgating:</strong> Following authorized personnel into secure areas</li>
+            </ul>
+            
+            <h3>Technical Attack Methods</h3>
+            <ul>
+                <li><strong>Man-in-the-Middle (MitM):</strong> Intercepting communications
+                    <ul>
+                        <li>ARP spoofing, DNS spoofing, session hijacking</li>
+                    </ul>
+                </li>
+                <li><strong>Denial of Service (DoS/DDoS):</strong> Overwhelming systems to disrupt service
+                    <ul>
+                        <li>Volume-based, protocol-based, application-layer attacks</li>
+                    </ul>
+                </li>
+                <li><strong>Password Attacks:</strong>
+                    <ul>
+                        <li><strong>Brute Force:</strong> Trying all possible combinations</li>
+                        <li><strong>Dictionary:</strong> Using common words and phrases</li>
+                        <li><strong>Rainbow Table:</strong> Precomputed hash tables</li>
+                        <li><strong>Credential Stuffing:</strong> Using breached credentials</li>
+                    </ul>
+                </li>
+                <li><strong>Physical Attacks:</strong>
+                    <ul>
+                        <li>Shoulder surfing, dumpster diving, hardware tampering</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="note">
+                <strong>💡 Defense Strategy</strong>
+                <p>Defense in depth is crucial - no single control can protect against all attack vectors. Combine technical, administrative, and physical controls.</p>
+            </div>
+
+            <div class="section-nav">
+                <button onclick="showSection(1)">← Previous</button>
+                <button onclick="showSection(3)">Next →</button>
+            </div>
+        </div>
+
+        <!-- Section 3: 2.3 Malware Types -->
+        <div class="section" id="section-3">
+            <button class="mark-complete-btn" onclick="toggleComplete(3)">Mark as Complete</button>
+            <h2>2.3 Malware Types</h2>
+            
+            <p>Malware (malicious software) encompasses various types of software designed to harm, exploit, or otherwise compromise computer systems.</p>
+            
+            <h3>Common Malware Categories</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Characteristics</th>
+                        <th>Propagation</th>
+                        <th>Primary Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Virus</strong></td>
+                        <td>Attaches to legitimate programs, requires user action</td>
+                        <td>File sharing, email attachments</td>
+                        <td>Data corruption, system damage</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Worm</strong></td>
+                        <td>Self-replicating, spreads without user interaction</td>
+                        <td>Network vulnerabilities</td>
+                        <td>Rapid infection, backdoor creation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Trojan Horse</strong></td>
+                        <td>Disguised as legitimate software</td>
+                        <td>User deception</td>
+                        <td>Backdoor access, data theft</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ransomware</strong></td>
+                        <td>Encrypts files and demands payment</td>
+                        <td>Exploit kits, phishing</td>
+                        <td>Financial extortion</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Spyware</strong></td>
+                        <td>Secretly monitors user activity</td>
+                        <td>Software bundles, drive-by downloads</td>
+                        <td>Information theft, surveillance</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rootkit</strong></td>
+                        <td>Hides deep in system, hard to detect</td>
+                        <td>Exploits, social engineering</td>
+                        <td>Persistent access, stealth</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Botnet</strong></td>
+                        <td>Network of compromised devices (zombies)</td>
+                        <td>Malware infection</td>
+                        <td>DDoS, spam, credential theft</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Logic Bomb</strong></td>
+                        <td>Dormant until triggered by specific conditions</td>
+                        <td>Insider placement</td>
+                        <td>Data destruction, system damage</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Advanced Malware Techniques</h3>
+            <ul>
+                <li><strong>Polymorphic Malware:</strong> Changes code to avoid signature detection</li>
+                <li><strong>Metamorphic Malware:</strong> Rewrites itself completely each time</li>
+                <li><strong>Fileless Malware:</strong> Runs in memory without files on disk</li>
+                <li><strong>Living-off-the-Land:</strong> Uses legitimate system tools for malicious purposes</li>
+            </ul>
+            
+            <h3>Malware Delivery Methods</h3>
+            <ul>
+                <li><strong>Drive-by Downloads:</strong> Automatic download when visiting compromised sites</li>
+                <li><strong>Malvertising:</strong> Malicious advertisements</li>
+                <li><strong>Phishing Attachments:</strong> Malware-laden email attachments</li>
+                <li><strong>Software Bundles:</strong> Legitimate software with hidden malware</li>
+                <li><strong>Removable Media:</strong> USB drives with auto-run malware</li>
+            </ul>
+
+            <div class="important">
+                <strong>Detection & Prevention</strong>
+                <p>Modern malware defense requires multiple layers: signature-based detection, behavioral analysis, sandboxing, and user education to prevent initial infection.</p>
+            </div>
+
+            <div class="section-nav">
+                <button onclick="showSection(2)">← Previous</button>
+                <button onclick="showSection(4)">Next →</button>
+            </div>
+        </div>
+
+        <!-- Section 4: 2.4 Vulnerabilities -->
+        <div class="section" id="section-4">
+            <button class="mark-complete-btn" onclick="toggleComplete(4)">Mark as Complete</button>
+            <h2>2.4 Vulnerabilities</h2>
+            
+            <p>Vulnerabilities are weaknesses in systems, processes, or human factors that can be exploited by threat actors.</p>
+            
+            <h3>Common Vulnerability Categories</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Examples</th>
+                        <th>Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Software Vulnerabilities</strong></td>
+                        <td>Buffer overflows, SQL injection, XSS</td>
+                        <td>Remote code execution, data theft</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Configuration Weaknesses</strong></td>
+                        <td>Default credentials, open ports, weak permissions</td>
+                        <td>Unauthorized access, privilege escalation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Network Vulnerabilities</strong></td>
+                        <td>Unencrypted protocols, weak encryption</td>
+                        <td>Eavesdropping, man-in-the-middle</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Human Factors</strong></td>
+                        <td>Social engineering, weak passwords</td>
+                        <td>Credential theft, unauthorized access</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Physical Security</strong></td>
+                        <td>Unsecured devices, lack of access controls</td>
+                        <td>Theft, tampering, unauthorized access</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Common Weaknesses Enumeration (CWE)</h3>
+            <p>Community-developed list of common software security weaknesses:</p>
+            <ul>
+                <li><strong>CWE-79:</strong> Cross-site Scripting (XSS)</li>
+                <li><strong>CWE-89:</strong> SQL Injection</li>
+                <li><strong>CWE-119:</strong> Buffer Overflow</li>
+                <li><strong>CWE-200:</strong> Information Exposure</li>
+                <li><strong>CWE-352:</strong> Cross-site Request Forgery (CSRF)</li>
+            </ul>
+            
+            <h3>Zero-Day Vulnerabilities</h3>
+            <p>Vulnerabilities unknown to the vendor with no available patch:</p>
+            <ul>
+                <li><strong>Discovery:</strong> Often found by security researchers or attackers</li>
+                <li><strong>Exploitation:</strong> Attacks before vendor awareness</li>
+                <li><strong>Mitigation:</strong> Defense in depth, intrusion prevention, application control</li>
+            </ul>
+            
+            <h3>Vulnerability Assessment</h3>
+            <p>Systematic process of identifying and classifying vulnerabilities:</p>
+            <ul>
+                <li><strong>Vulnerability Scanning:</strong> Automated tools to identify known vulnerabilities</li>
+                <li><strong>Penetration Testing:</strong> Simulated attacks to exploit vulnerabilities</li>
+                <li><strong>Risk Assessment:</strong> Evaluating impact and likelihood of exploitation</li>
+            </ul>
+
+            <div class="exam-tip">
+                <strong>Exam Tip</strong>
+                <p>Know the difference between vulnerability (weakness), threat (potential danger), and risk (likelihood × impact). Be familiar with common CVEs and their mitigations.</p>
+            </div>
+
+            <div class="section-nav">
+                <button onclick="showSection(3)">← Previous</button>
+                <button onclick="showSection(5)">Next →</button>
+            </div>
+        </div>
+
+        <!-- Section 5: 2.5 Mitigations -->
+        <div class="section" id="section-5">
+            <button class="mark-complete-btn" onclick="toggleComplete(5)">Mark as Complete</button>
+            <h2>2.5 Mitigations</h2>
+            
+            <p>Mitigations are security controls and countermeasures designed to reduce risk by addressing threats and vulnerabilities.</p>
+            
+            <h3>Defense in Depth Strategy</h3>
+            <p>Layered security approach using multiple controls:</p>
+            <ul>
+                <li><strong>Perimeter:</strong> Firewalls, network segmentation</li>
+                <li><strong>Network:</strong> IDS/IPS, network monitoring</li>
+                <li><strong>Host:</strong> Antivirus, host firewalls, patch management</li>
+                <li><strong>Application:</strong> Secure coding, input validation</li>
+                <li><strong>Data:</strong> Encryption, access controls</li>
+            </ul>
+            
+            <h3>Specific Mitigation Techniques</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Threat/Vulnerability</th>
+                        <th>Primary Mitigations</th>
+                        <th>Additional Controls</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Malware</strong></td>
+                        <td>Antivirus, application whitelisting</td>
+                        <td>User education, email filtering</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Social Engineering</strong></td>
+                        <td>Security awareness training</td>
+                        <td>Multi-factor authentication, least privilege</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Network Attacks</strong></td>
+                        <td>Firewalls, IDS/IPS</td>
+                        <td>Network segmentation, VPNs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Web Application Attacks</strong></td>
+                        <td>Input validation, WAF</td>
+                        <td>Secure coding practices, regular patching</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Insider Threats</strong></td>
+                        <td>Least privilege, separation of duties</td>
+                        <td>User behavior analytics, audit logs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Physical Threats</strong></td>
+                        <td>Access controls, surveillance</td>
+                        <td>Asset tracking, environmental controls</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Technical Security Controls</h3>
+            <ul>
+                <li><strong>Network Security:</strong>
+                    <ul>
+                        <li>Firewalls (stateful, next-generation)</li>
+                        <li>Intrusion Detection/Prevention Systems (IDS/IPS)</li>
+                        <li>Network Access Control (NAC)</li>
+                        <li>Virtual Private Networks (VPNs)</li>
+                    </ul>
+                </li>
+                <li><strong>Endpoint Protection:</strong>
+                    <ul>
+                        <li>Antivirus/Anti-malware</li>
+                        <li>Host-based Firewalls</li>
+                        <li>Endpoint Detection and Response (EDR)</li>
+                        <li>Application Control/Whitelisting</li>
+                    </ul>
+                </li>
+                <li><strong>Access Management:</strong>
+                    <ul>
+                        <li>Multi-factor Authentication (MFA)</li>
+                        <li>Role-Based Access Control (RBAC)</li>
+                        <li>Privileged Access Management (PAM)</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <h3>Administrative & Physical Controls</h3>
+            <ul>
+                <li><strong>Security Policies:</strong> Acceptable use, data classification</li>
+                <li><strong>Training & Awareness:</strong> Regular security education</li>
+                <li><strong>Incident Response:</strong> Preparedness and response plans</li>
+                <li><strong>Physical Security:</strong> Access controls, surveillance, environmental controls</li>
+            </ul>
+
+            <div class="note">
+                <strong>💡 Effective Mitigation Strategy</strong>
+                <p>The most effective security programs combine technical controls with strong policies and ongoing user education. Regular testing and updates are essential as threats evolve.</p>
+            </div>
+
+            <div class="section-nav">
+                <button onclick="showSection(4)">← Previous</button>
+                <button disabled>Next →</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

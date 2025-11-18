@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security+ SY0-701 Glossary</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #2d2d2d;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .home-btn {
+            background: #e74c3c;
+            color: white;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .home-btn:hover {
+            background: #c0392b;
+        }
+
+        .glossary-content {
+            padding: 2rem;
+        }
+
+        .letter-section {
+            margin-bottom: 3rem;
+        }
+
+        .letter-header {
+            color: #81c784;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #81c784;
+        }
+
+        .term-item {
+            background: #3a3a3a;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .term-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+
+        .term-name {
+            color: #64b5f6;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .term-definition {
+            color: #bdc3c7;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .glossary-content {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .letter-header {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Security+ SY0-701 Study Guide</h1>
+            <p class="subtitle">Complete Term Glossary</p>
+            <a href="./index.html" class="home-btn">🏠 Study Hub</a>
+        </header>
+
+        <div class="glossary-content" id="glossaryContent">
+            <!-- Glossary content will be inserted here by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        const glossary = {
+            'A': [
+                { term: 'AAA (Authentication, Authorization, Accounting)', definition: 'Framework for controlling access to resources, enforcing policies, and auditing usage.' },
+                { term: 'Access Control', definition: 'Security technique regulating who or what can view or use resources in a computing environment.' },
+                { term: 'Access Control List (ACL)', definition: 'List of permissions attached to an object specifying which users or system processes can access it.' },
+                { term: 'Advanced Encryption Standard (AES)', definition: 'Symmetric encryption algorithm widely used to secure sensitive data.' },
+                { term: 'Advanced Persistent Threat (APT)', definition: 'Prolonged and targeted cyberattack where an intruder gains unauthorized access and remains undetected.' },
+                { term: 'Anomaly-Based Detection', definition: 'Method of detecting threats by identifying deviations from normal behavior patterns.' },
+                { term: 'Anti-Malware', definition: 'Software designed to detect, prevent, and remove malicious software.' },
+                { term: 'Application Programming Interface (API)', definition: 'Set of protocols and tools for building software applications.' },
+                { term: 'Asset', definition: 'Any data, device, or other component of an environment that supports information-related activities.' },
+                { term: 'Asymmetric Encryption', definition: 'Encryption method using a pair of keys: public key for encryption and private key for decryption.' },
+                { term: 'Attack Surface', definition: 'Sum of vulnerabilities, pathways, or methods that can be exploited to gain unauthorized access.' },
+                { term: 'Attack Vector', definition: 'Path or means by which an attacker gains access to a system to deliver a payload or malicious outcome.' },
+                { term: 'Auditing', definition: 'Process of examining and verifying an organization\'s security policies, procedures, and controls.' },
+                { term: 'Authentication', definition: 'Process of verifying the identity of a user, device, or system.' },
+                { term: 'Authorization', definition: 'Process of granting or denying access rights to resources based on identity.' },
+                { term: 'Availability', definition: 'Ensuring that information and resources are accessible to authorized users when needed.' }
+            ],
+            'B': [
+                { term: 'Backdoor', definition: 'Hidden method of bypassing normal authentication to gain access to a system.' },
+                { term: 'Backup', definition: 'Copy of data stored separately to restore in case of data loss or corruption.' },
+                { term: 'Baseline', definition: 'Reference point used to measure changes and deviations in system performance or security.' },
+                { term: 'Biometrics', definition: 'Authentication method based on unique physical or behavioral characteristics.' },
+                { term: 'Black Hat Hacker', definition: 'Malicious hacker who violates computer security for personal gain or malicious intent.' },
+                { term: 'Blue Team', definition: 'Security professionals defending against and responding to cyber threats.' },
+                { term: 'Botnet', definition: 'Network of compromised computers controlled remotely to perform malicious activities.' },
+                { term: 'Bring Your Own Device (BYOD)', definition: 'Policy allowing employees to use personal devices for work purposes.' },
+                { term: 'Brute Force Attack', definition: 'Trial-and-error method to crack passwords, encryption keys, or find hidden web pages.' },
+                { term: 'Buffer Overflow', definition: 'Vulnerability where a program writes more data to a buffer than it can hold, causing data corruption.' },
+                { term: 'Business Continuity Planning (BCP)', definition: 'Process of creating systems to prevent and recover from potential threats to a company.' },
+                { term: 'Business Impact Analysis (BIA)', definition: 'Process identifying critical business functions and the impact of their disruption.' }
+            ],
+            'C': [
+                { term: 'Certificate Authority (CA)', definition: 'Trusted entity that issues digital certificates to verify identities on the internet.' },
+                { term: 'Chain of Custody', definition: 'Documentation of the collection, transfer, and handling of evidence.' },
+                { term: 'Change Management', definition: 'Systematic approach to dealing with changes in IT infrastructure or business processes.' },
+                { term: 'Cipher', definition: 'Algorithm for performing encryption or decryption.' },
+                { term: 'Cloud Access Security Broker (CASB)', definition: 'Security policy enforcement point between cloud service consumers and providers.' },
+                { term: 'Cloud Computing', definition: 'Delivery of computing services over the internet including storage, processing, and software.' },
+                { term: 'Cold Site', definition: 'Backup facility with minimal equipment requiring significant setup time for recovery.' },
+                { term: 'Command and Control (C2)', definition: 'Infrastructure used by attackers to communicate with compromised systems.' },
+                { term: 'Compensating Control', definition: 'Alternative control used when primary control cannot be implemented.' },
+                { term: 'Confidentiality', definition: 'Ensuring that information is accessible only to authorized individuals.' },
+                { term: 'Configuration Management', definition: 'Process of maintaining computer systems and software in a desired, consistent state.' },
+                { term: 'Container', definition: 'Lightweight, standalone package containing everything needed to run an application.' },
+                { term: 'Containerization', definition: 'OS-level virtualization method for deploying and running distributed applications.' },
+                { term: 'Cryptography', definition: 'Practice of securing information by transforming it into an unreadable format.' },
+                { term: 'Cyber Kill Chain', definition: 'Model describing stages of a cyberattack from reconnaissance to objectives.' }
+            ],
+            'D': [
+                { term: 'Data at Rest', definition: 'Inactive data stored physically in any digital form.' },
+                { term: 'Data in Transit', definition: 'Data actively moving from one location to another across a network.' },
+                { term: 'Data Loss Prevention (DLP)', definition: 'Strategy and tools to prevent sensitive data from leaving the organization.' },
+                { term: 'Defense in Depth', definition: 'Layered security approach using multiple security measures.' },
+                { term: 'Demilitarized Zone (DMZ)', definition: 'Physical or logical subnet separating an internal network from untrusted networks.' },
+                { term: 'Denial of Service (DoS)', definition: 'Attack making a machine or network resource unavailable to users.' },
+                { term: 'Digital Certificate', definition: 'Electronic document used to prove ownership of a public key.' },
+                { term: 'Digital Forensics', definition: 'Recovery and investigation of material found in digital devices.' },
+                { term: 'Digital Signature', definition: 'Mathematical scheme for verifying authenticity and integrity of digital messages.' },
+                { term: 'Disaster Recovery (DR)', definition: 'Strategies and procedures for recovering IT infrastructure after a disaster.' },
+                { term: 'Distributed Denial of Service (DDoS)', definition: 'DoS attack using multiple compromised systems to flood a target.' },
+                { term: 'Domain Name System (DNS)', definition: 'Hierarchical naming system that translates domain names to IP addresses.' },
+                { term: 'Due Diligence', definition: 'Investigation or audit of a potential investment or product to confirm facts.' }
+            ],
+            'E': [
+                { term: 'Encryption', definition: 'Process of converting information into a coded format to prevent unauthorized access.' },
+                { term: 'Endpoint Detection and Response (EDR)', definition: 'Integrated endpoint security solution combining real-time monitoring and response.' },
+                { term: 'Evil Twin', definition: 'Fraudulent Wi-Fi access point appearing legitimate to steal user credentials.' },
+                { term: 'Exploit', definition: 'Piece of code or technique that takes advantage of a security vulnerability.' },
+                { term: 'Extended Detection and Response (XDR)', definition: 'Unified security platform providing holistic protection across multiple security layers.' }
+            ],
+            'F': [
+                { term: 'Failover', definition: 'Switching to a redundant system upon failure of the primary system.' },
+                { term: 'False Negative', definition: 'Failure to detect an actual threat or malicious activity.' },
+                { term: 'False Positive', definition: 'Incorrectly identifying legitimate activity as a threat.' },
+                { term: 'File Integrity Monitoring (FIM)', definition: 'Technology validating the integrity of operating system and application files.' },
+                { term: 'Firewall', definition: 'Network security system monitoring and controlling incoming and outgoing traffic.' },
+                { term: 'Forensics', definition: 'Application of science to criminal and civil laws during criminal investigation.' },
+                { term: 'Full Backup', definition: 'Complete copy of all data in a dataset at a specific point in time.' }
+            ],
+            'G': [
+                { term: 'Gateway', definition: 'Network node connecting two networks using different protocols.' },
+                { term: 'Governance', definition: 'Framework for managing and directing an organization\'s IT security.' },
+                { term: 'Gray Hat Hacker', definition: 'Hacker who may violate laws but without malicious intent.' },
+                { term: 'Group Policy', definition: 'Feature providing centralized management of operating systems, applications, and users.' }
+            ],
+            'H': [
+                { term: 'Hash Function', definition: 'Algorithm mapping data of arbitrary size to fixed-size values.' },
+                { term: 'Hashing', definition: 'Process of converting input data into a fixed-size string of characters.' },
+                { term: 'Honeypot', definition: 'Decoy system designed to attract and detect attackers.' },
+                { term: 'Host-Based Intrusion Detection System (HIDS)', definition: 'System monitoring a single host for suspicious activity.' },
+                { term: 'Hot Site', definition: 'Fully operational backup facility ready for immediate use.' },
+                { term: 'Hypervisor', definition: 'Software creating and running virtual machines.' }
+            ],
+            'I': [
+                { term: 'Identity and Access Management (IAM)', definition: 'Framework of policies and technologies ensuring appropriate access to resources.' },
+                { term: 'Incident Response', definition: 'Organized approach to addressing and managing security breaches or attacks.' },
+                { term: 'Incremental Backup', definition: 'Backup of data changed since the last backup of any type.' },
+                { term: 'Industrial Control System (ICS)', definition: 'Control system managing industrial processes.' },
+                { term: 'Information Security', definition: 'Practice of protecting information by mitigating information risks.' },
+                { term: 'Integrity', definition: 'Ensuring data accuracy and consistency over its lifecycle.' },
+                { term: 'Internet of Things (IoT)', definition: 'Network of physical devices embedded with sensors and software connecting and exchanging data.' },
+                { term: 'Intrusion Detection System (IDS)', definition: 'Device or software monitoring network traffic for suspicious activity.' },
+                { term: 'Intrusion Prevention System (IPS)', definition: 'Network security tool monitoring traffic for malicious activity and taking action.' },
+                { term: 'IP Address', definition: 'Numerical label assigned to each device connected to a network.' }
+            ],
+            'J': [
+                { term: 'Java', definition: 'High-level programming language commonly used for web applications.' },
+                { term: 'Jailbreaking', definition: 'Process of removing software restrictions on iOS devices.' }
+            ],
+            'K': [
+                { term: 'Kerberos', definition: 'Network authentication protocol using tickets to allow nodes to prove identity.' },
+                { term: 'Key', definition: 'Piece of information determining the functional output of a cryptographic algorithm.' },
+                { term: 'Key Management', definition: 'Administration of cryptographic keys in a cryptosystem.' },
+                { term: 'Keylogger', definition: 'Software or hardware recording keystrokes on a computer.' }
+            ],
+            'L': [
+                { term: 'Least Privilege', definition: 'Security principle limiting user access rights to minimum necessary.' },
+                { term: 'Lightweight Directory Access Protocol (LDAP)', definition: 'Protocol for accessing and maintaining distributed directory information services.' },
+                { term: 'Load Balancer', definition: 'Device distributing network traffic across multiple servers.' },
+                { term: 'Logic Bomb', definition: 'Malicious code triggered by specific conditions or events.' },
+                { term: 'Log Management', definition: 'Process of collecting, storing, analyzing, and disposing of log data.' }
+            ],
+            'M': [
+                { term: 'Malware', definition: 'Software intentionally designed to cause damage to a computer or network.' },
+                { term: 'Man-in-the-Middle (MitM)', definition: 'Attack where attacker intercepts communication between two parties.' },
+                { term: 'Mantrap', definition: 'Physical security access control system with two interlocking doors.' },
+                { term: 'Message Digest', definition: 'Fixed-size output of a hash function.' },
+                { term: 'Mobile Device Management (MDM)', definition: 'Software securing, monitoring, and managing mobile devices.' },
+                { term: 'Multi-Factor Authentication (MFA)', definition: 'Authentication method requiring two or more verification factors.' },
+                { term: 'Multitenant', definition: 'Software architecture where a single instance serves multiple customers.' }
+            ],
+            'N': [
+                { term: 'Network Access Control (NAC)', definition: 'Approach to security controlling access to network resources.' },
+                { term: 'Network Address Translation (NAT)', definition: 'Method remapping IP address space by modifying network address information.' },
+                { term: 'Network Segmentation', definition: 'Practice of splitting a network into multiple segments or subnets.' },
+                { term: 'Next-Generation Firewall (NGFW)', definition: 'Advanced firewall combining traditional firewall with additional security functions.' },
+                { term: 'Non-Repudiation', definition: 'Assurance that someone cannot deny the validity of something.' }
+            ],
+            'O': [
+                { term: 'OAuth', definition: 'Open standard for access delegation commonly used for token-based authentication.' },
+                { term: 'Operational Technology (OT)', definition: 'Hardware and software monitoring and controlling physical devices and processes.' },
+                { term: 'Operating System (OS)', definition: 'Software managing computer hardware and software resources.' }
+            ],
+            'P': [
+                { term: 'Patch Management', definition: 'Process of managing updates for software applications and technologies.' },
+                { term: 'Penetration Testing', definition: 'Authorized simulated attack on a system to evaluate security.' },
+                { term: 'Phishing', definition: 'Fraudulent attempt to obtain sensitive information by disguising as trustworthy entity.' },
+                { term: 'Physical Security', definition: 'Measures designed to deny unauthorized physical access to facilities and equipment.' },
+                { term: 'Playbook', definition: 'Documented procedures for responding to specific security incidents.' },
+                { term: 'Port Scanning', definition: 'Method for determining which ports on a network are open.' },
+                { term: 'Principle of Least Privilege', definition: 'Giving users only the minimum access rights necessary.' },
+                { term: 'Privacy', definition: 'Right of individuals to control collection and use of their personal information.' },
+                { term: 'Privilege Escalation', definition: 'Act of exploiting a bug to gain elevated access to resources.' },
+                { term: 'Public Key Infrastructure (PKI)', definition: 'Set of roles, policies, and procedures managing digital certificates.' }
+            ],
+            'Q': [
+                { term: 'Quarantine', definition: 'Isolation of potentially malicious files or systems from network.' },
+                { term: 'Query', definition: 'Request for information from a database.' }
+            ],
+            'R': [
+                { term: 'Rainbow Table', definition: 'Precomputed table for reversing cryptographic hash functions.' },
+                { term: 'Ransomware', definition: 'Malware encrypting victim\'s files and demanding payment for decryption key.' },
+                { term: 'Red Team', definition: 'Group simulating attacks to test an organization\'s security.' },
+                { term: 'Redundancy', definition: 'Duplication of critical components to increase reliability.' },
+                { term: 'Remote Access', definition: 'Ability to access computer or network from a remote location.' },
+                { term: 'Remote Access Trojan (RAT)', definition: 'Malware providing backdoor for administrative control.' },
+                { term: 'Replay Attack', definition: 'Network attack where valid data transmission is maliciously repeated.' },
+                { term: 'Risk', definition: 'Potential for loss or damage when a threat exploits a vulnerability.' },
+                { term: 'Risk Assessment', definition: 'Process of identifying and evaluating risks.' },
+                { term: 'Risk Management', definition: 'Process of identifying, assessing, and controlling threats.' },
+                { term: 'Role-Based Access Control (RBAC)', definition: 'Method restricting system access based on user roles.' },
+                { term: 'Rootkit', definition: 'Software enabling continued privileged access while hiding presence.' },
+                { term: 'RPO (Recovery Point Objective)', definition: 'Maximum acceptable amount of data loss measured in time.' },
+                { term: 'RTO (Recovery Time Objective)', definition: 'Maximum acceptable time to restore system after disruption.' }
+            ],
+            'S': [
+                { term: 'Sandboxing', definition: 'Security mechanism separating running programs to prevent system failures.' },
+                { term: 'SCADA (Supervisory Control and Data Acquisition)', definition: 'Control system architecture for high-level supervisory management.' },
+                { term: 'Security Awareness Training', definition: 'Programs educating employees about security policies and threats.' },
+                { term: 'Security Information and Event Management (SIEM)', definition: 'Software providing real-time analysis of security alerts.' },
+                { term: 'Security Operations Center (SOC)', definition: 'Centralized unit dealing with security issues.' },
+                { term: 'Security Policy', definition: 'Document defining organization\'s security controls and procedures.' },
+                { term: 'Separation of Duties', definition: 'Concept of having multiple people required to complete a task.' },
+                { term: 'Single Point of Failure', definition: 'Component whose failure stops entire system from working.' },
+                { term: 'Single Sign-On (SSO)', definition: 'Authentication process allowing users to access multiple applications with one set of credentials.' },
+                { term: 'Social Engineering', definition: 'Psychological manipulation of people to divulge confidential information.' },
+                { term: 'Spear Phishing', definition: 'Targeted phishing attack directed at specific individuals or organizations.' },
+                { term: 'SQL Injection', definition: 'Code injection technique exploiting vulnerabilities in database queries.' },
+                { term: 'SSL/TLS', definition: 'Cryptographic protocols providing secure communications over networks.' },
+                { term: 'Steganography', definition: 'Practice of hiding messages within non-secret data.' },
+                { term: 'Supply Chain Attack', definition: 'Attack targeting less-secure elements in the supply network.' },
+                { term: 'Symmetric Encryption', definition: 'Encryption method using the same key for encryption and decryption.' }
+            ],
+            'T': [
+                { term: 'Threat', definition: 'Potential cause of an unwanted incident which may harm a system.' },
+                { term: 'Threat Actor', definition: 'Individual or group posing a threat to cybersecurity.' },
+                { term: 'Threat Intelligence', definition: 'Evidence-based knowledge about existing or emerging threats.' },
+                { term: 'Token', definition: 'Physical or digital device providing authentication credentials.' },
+                { term: 'Trojan Horse', definition: 'Malware disguised as legitimate software.' },
+                { term: 'Two-Factor Authentication (2FA)', definition: 'Authentication method requiring two different verification factors.' }
+            ],
+            'U': [
+                { term: 'Unified Threat Management (UTM)', definition: 'Comprehensive security solution combining multiple security features.' },
+                { term: 'User Account Control (UAC)', definition: 'Security feature preventing unauthorized changes to the operating system.' },
+                { term: 'User Awareness', definition: 'Knowledge and understanding of security risks and best practices.' }
+            ],
+            'V': [
+                { term: 'Virtual Local Area Network (VLAN)', definition: 'Logical grouping of network devices on the same physical network.' },
+                { term: 'Virtual Machine (VM)', definition: 'Emulation of a computer system providing functionality of a physical computer.' },
+                { term: 'Virtual Private Network (VPN)', definition: 'Encrypted connection over the internet from device to network.' },
+                { term: 'Virtualization', definition: 'Creation of virtual versions of computing resources.' },
+                { term: 'Virus', definition: 'Malicious code replicating by inserting copies into other programs.' },
+                { term: 'Vulnerability', definition: 'Weakness that can be exploited by a threat actor.' },
+                { term: 'Vulnerability Assessment', definition: 'Process of identifying and quantifying security vulnerabilities.' },
+                { term: 'Vulnerability Scanning', definition: 'Automated process of identifying security weaknesses.' }
+            ],
+            'W': [
+                { term: 'Warm Site', definition: 'Backup facility with partial equipment requiring moderate setup time.' },
+                { term: 'Watering Hole Attack', definition: 'Attack targeting websites frequently visited by specific group.' },
+                { term: 'Web Application Firewall (WAF)', definition: 'Firewall specifically designed to protect web applications.' },
+                { term: 'White Hat Hacker', definition: 'Ethical hacker who uses skills to improve security.' },
+                { term: 'Whitelisting', definition: 'Security practice allowing only approved entities access.' },
+                { term: 'Worm', definition: 'Self-replicating malware spreading across networks without user action.' }
+            ],
+            'X': [
+                { term: 'XDR (Extended Detection and Response)', definition: 'Unified security platform providing detection and response across multiple security layers.' },
+                { term: 'XSS (Cross-Site Scripting)', definition: 'Security vulnerability allowing attackers to inject malicious scripts into web pages.' }
+            ],
+            'Y': [
+                { term: 'YARA', definition: 'Tool used to identify and classify malware samples based on pattern matching.' }
+            ],
+            'Z': [
+                { term: 'Zero Trust', definition: 'Security model assuming no implicit trust regardless of network location.' },
+                { term: 'Zero-Day', definition: 'Vulnerability unknown to vendor and without available patch.' },
+                { term: 'Zombie', definition: 'Compromised computer controlled remotely as part of a botnet.' }
+            ]
+        };
+
+        function renderGlossary() {
+            const content = document.getElementById('glossaryContent');
+            
+            // Render all terms
+            Object.keys(glossary).forEach(letter => {
+                const section = document.createElement('div');
+                section.className = 'letter-section';
+                section.id = `letter-${letter}`;
+                
+                const header = document.createElement('div');
+                header.className = 'letter-header';
+                header.textContent = letter;
+                section.appendChild(header);
+                
+                glossary[letter].forEach(item => {
+                    const termDiv = document.createElement('div');
+                    termDiv.className = 'term-item';
+                    
+                    const termName = document.createElement('div');
+                    termName.className = 'term-name';
+                    termName.textContent = item.term;
+                    
+                    const termDef = document.createElement('div');
+                    termDef.className = 'term-definition';
+                    termDef.textContent = item.definition;
+                    
+                    termDiv.appendChild(termName);
+                    termDiv.appendChild(termDef);
+                    section.appendChild(termDiv);
+                });
+                
+                content.appendChild(section);
+            });
+        }
+
+        // Initialize the glossary when the page loads
+        document.addEventListener('DOMContentLoaded', renderGlossary);
+    </script>
+</body>
+</html>

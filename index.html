@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security+ SY0-701 Study Guide Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        /* Navigation */
+        nav {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        nav p {
+            color: #bdc3c7;
+            font-size: 1.1rem;
+        }
+
+        /* Content Area */
+        .content-wrapper {
+            margin-top: 120px;
+            padding: 2rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hub-container {
+            background: #2d2d2d;
+            color: #e0e0e0;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            color: #64b5f6;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            text-align: center;
+            border-bottom: 2px solid #404040;
+            padding-bottom: 1rem;
+        }
+
+        .intro-text {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            color: #bdc3c7;
+        }
+
+        /* Main Sections Grid */
+        .main-sections {
+            margin-bottom: 3rem;
+        }
+
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-card {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            border-radius: 10px;
+            padding: 2rem;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 140px;
+            border: 2px solid transparent;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.4);
+            border-color: #64b5f6;
+        }
+
+        .section-number {
+            font-size: 2.2em;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .section-title {
+            font-size: 1.1em;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* Study Tools Section */
+        .study-tools {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 3px solid #404040;
+        }
+
+        .study-tools h3 {
+            color: #81c784;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tool-card {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            border-radius: 10px;
+            padding: 2rem;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            border: 2px solid transparent;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(39, 174, 96, 0.4);
+            border-color: #81c784;
+        }
+
+        .tool-icon {
+            font-size: 3em;
+            flex-shrink: 0;
+        }
+
+        .tool-content {
+            flex: 1;
+        }
+
+        .tool-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-description {
+            font-size: 0.95em;
+            opacity: 0.95;
+            line-height: 1.4;
+        }
+
+        .info-section {
+            background: #1e3a5f;
+            border-left: 4px solid #42a5f5;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 5px;
+        }
+
+        .info-section h3 {
+            color: #64b5f6;
+            margin-bottom: 1rem;
+        }
+
+        .info-section ul {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        .info-section li {
+            margin: 0.5rem 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #404040;
+            color: #95a5a6;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                margin-top: 120px;
+                padding: 1rem;
+            }
+
+            .hub-container {
+                padding: 1.5rem;
+            }
+
+            .sections-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav h1 {
+                font-size: 1.4rem;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            .tool-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1>Security+ SY0-701 Study Guide</h1>
+        <p><strong>Main Hub</strong></p>
+    </nav>
+
+    <div class="content-wrapper">
+        <div class="hub-container">
+            <h2>📚 Study Guide Hub</h2>
+            <p class="intro-text">Select a section below to begin studying</p>
+            
+            <!-- Main Study Sections -->
+            <div class="main-sections">
+                <div class="sections-grid">
+                    <a href="section 1.html" class="section-card">
+                        <div class="section-number">1.0</div>
+                        <div class="section-title">General Security Concepts</div>
+                    </a>
+                    
+                    <a href="section 2.html" class="section-card">
+                        <div class="section-number">2.0</div>
+                        <div class="section-title">Threats, Vulnerabilities & Mitigations</div>
+                    </a>
+                    
+                    <a href="section 3.html" class="section-card">
+                        <div class="section-number">3.0</div>
+                        <div class="section-title">Security Architecture</div>
+                    </a>
+                    
+                    <a href="section 4.html" class="section-card">
+                        <div class="section-number">4.0</div>
+                        <div class="section-title">Security Operations</div>
+                    </a>
+                    
+                    <a href="section 5.html" class="section-card">
+                        <div class="section-number">5.0</div>
+                        <div class="section-title">Security Program Management</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Study Tools Section -->
+            <div class="study-tools">
+                <h3>🎯 Study Tools</h3>
+                <div class="tools-grid">
+                    <a href="acronyms.html" class="tool-card">
+                        <div class="tool-icon">📝</div>
+                        <div class="tool-content">
+                            <div class="tool-title">Acronym Practice</div>
+                            <div class="tool-description">Master all Security+ acronyms with interactive flashcards and quizzes</div>
+                        </div>
+                    </a>
+
+                    <a href="glossary.html" class="tool-card">
+                        <div class="tool-icon">📖</div>
+                        <div class="tool-content">
+                            <div class="tool-title">Term Glossary</div>
+                            <div class="tool-description">Comprehensive glossary of all security terms and definitions</div>
+                        </div>
+                    </a>
+
+                    <a href="ports.html" class="tool-card">
+                        <div class="tool-icon">🔌</div>
+                        <div class="tool-content">
+                            <div class="tool-title">Port Numbers</div>
+                            <div class="tool-description">Learn essential port numbers for common services and protocols</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h3>About This Study Guide</h3>
+                <ul>
+                    <li>Comprehensive coverage of all Security+ SY0-701 exam objectives</li>
+                    <li>Interactive navigation with progress tracking</li>
+                    <li>Dedicated acronym study tool for exam preparation</li>
+                    <li>Port numbers reference for common services and protocols</li>
+                    <li>Mark sections as complete to track your progress</li>
+                    <li>Dark mode interface for comfortable studying</li>
+                </ul>
+            </div>
+
+            <div class="footer">
+                <p>💡 Click any section above to start learning</p>
+                <p style="margin-top: 1rem; font-size: 0.9rem;">Good luck with your Security+ certification!</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security+ SY0-701 Study Guide - Section 5.0</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        nav {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .nav-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #2980b9;
+        }
+
+        .nav-btn.active {
+            background: #e74c3c;
+        }
+
+        .nav-btn.completed {
+            background: #27ae60;
+        }
+
+        .nav-btn.completed::after {
+            content: ' ✓';
+        }
+
+        .home-btn {
+            background: #e74c3c;
+            color: white;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+
+        .home-btn:hover {
+            background: #c0392b;
+        }
+
+        .content-wrapper {
+            margin-top: 220px;
+            padding: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section {
+            display: none;
+            background: #2d2d2d;
+            color: #e0e0e0;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            animation: fadeIn 0.3s;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: #64b5f6;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #404040;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: #64b5f6;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        h4 {
+            color: #81c784;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .important, .note, .exam-tip {
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid;
+            border-radius: 5px;
+        }
+
+        .important {
+            border-color: #ef5350;
+            background: #3d2525;
+        }
+
+        .note {
+            border-color: #42a5f5;
+            background: #1e3a5f;
+        }
+
+        .exam-tip {
+            border-color: #ffa726;
+            background: #3d2f1f;
+        }
+
+        .important strong, .note strong, .exam-tip strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: #1a1a1a;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border: 1px solid #404040;
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background: #252525;
+        }
+
+        code {
+            background: #3a3a3a;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #a5d6a7;
+        }
+
+        .mark-complete-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+            float: right;
+            margin-bottom: 1rem;
+        }
+
+        .mark-complete-btn:hover {
+            background: #229954;
+        }
+
+        .mark-complete-btn.completed {
+            background: #95a5a6;
+        }
+
+        .mark-complete-btn.completed::before {
+            content: '✓ ';
+        }
+
+        .section-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 2px solid #404040;
+            clear: both;
+        }
+
+        .section-nav button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .section-nav button:hover:not(:disabled) {
+            background: #2980b9;
+        }
+
+        .section-nav button:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                margin-top: 260px;
+                padding: 1rem;
+            }
+
+            .nav-buttons {
+                font-size: 0.8rem;
+            }
+
+            .nav-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .home-btn {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Load completion status from localStorage
+        function loadCompletionStatus() {
+            const completed = JSON.parse(localStorage.getItem('section5_completed') || '[]');
+            completed.forEach(index => {
+                const btn = document.querySelector(`button[onclick="showSection(${index})"]`);
+                if (btn) btn.classList.add('completed');
+                
+                const markBtn = document.getElementById(`section-${index}`)?.querySelector('.mark-complete-btn');
+                if (markBtn) {
+                    markBtn.classList.add('completed');
+                    markBtn.textContent = 'Completed';
+                }
+            });
+        }
+
+        // Show specific section
+        function showSection(index) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all nav buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(`section-${index}`).classList.add('active');
+            
+            // Add active class to clicked button
+            document.querySelectorAll('.nav-btn')[index].classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Toggle completion status
+        function toggleComplete(index) {
+            const completed = JSON.parse(localStorage.getItem('section5_completed') || '[]');
+            const navBtn = document.querySelector(`button[onclick="showSection(${index})"]`);
+            const markBtn = document.getElementById(`section-${index}`).querySelector('.mark-complete-btn');
+            
+            if (completed.includes(index)) {
+                // Remove from completed
+                const newCompleted = completed.filter(i => i !== index);
+                localStorage.setItem('section5_completed', JSON.stringify(newCompleted));
+                navBtn.classList.remove('completed');
+                markBtn.classList.remove('completed');
+                markBtn.textContent = 'Mark as Complete';
+            } else {
+                // Add to completed
+                completed.push(index);
+                localStorage.setItem('section5_completed', JSON.stringify(completed));
+                navBtn.classList.add('completed');
+                markBtn.classList.add('completed');
+                markBtn.textContent = 'Completed';
+            }
+        }
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadCompletionStatus();
+        });
+    </script>
+
+    <nav>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <div>
+                <h1>Security+ SY0-701 Study Guide</h1>
+                <p><strong>Section 5.0: Security Program Management</strong></p>
+            </div>
+            <a href="./index.html" class="home-btn">🏠 Study Hub</a>
+        </div>
+        <div class="nav-buttons">
+            <button class="nav-btn active" onclick="showSection(0)">Overview</button>
+            <button class="nav-btn" onclick="showSection(1)">5.1 Governance & Compliance</button>
+            <button class="nav-btn" onclick="showSection(2)">5.2 Risk Management</button>
+            <button class="nav-btn" onclick="showSection(3)">5.3 Security Awareness</button>
+            <button class="nav-btn" onclick="showSection(4)">5.4 Business Continuity</button>
+            <button class="nav-btn" onclick="showSection(5)">5.5 Data Protection</button>
+        </div>
+    </nav>
+
+    <div class="content-wrapper">
+        <!-- Section 0: Overview -->
+        <div class="section active" id="section-0">
+            <button class="mark-complete-btn" onclick="toggleComplete(0)">Mark as Complete</button>
+            <h2>5.0 Security Program Management</h2>
+            
+            <p>Security Program Management focuses on the organizational aspects of security, including governance, risk management, compliance, awareness training, and business continuity planning. This section covers the management frameworks and processes that support effective security programs.</p>
+            
+            <div class="important">
+                <strong>Important</strong>
+                <p>This section represents approximately 18% of the Security+ exam and covers the managerial and organizational aspects of cybersecurity that are essential for security leadership roles.</p>
+            </div>
+
+            <h3>What You'll Learn</h3>
+            <ul>
+                <li>📋 Governance & Compliance - Policies, standards, and regulatory requirements</li>
+                <li>⚖️ Risk Management - Assessment, analysis, and treatment strategies</li>
+                <li>👥 Security Awareness - Training programs and human factors</li>
+                <li>🔄 Business Continuity - Planning, testing, and recovery strategies</li>
+                <li>🔒 Data Protection - Classification, handling, and privacy requirements</li>
+            </ul>
+
+            <div class="note">
+                <strong>Study Tip</strong>
+                <p>Focus on understanding the relationships between different governance frameworks, risk management processes, and compliance requirements. Many questions will test your ability to apply these concepts in organizational contexts.</p>
+            </div>
+
+            <div class="section-nav">
+                <button disabled>← Previous</button>
+                <button onclick="showSection(1)">Next →</button>
+            </div>
+        </div>
+
+        <!-- Section 1: 5.1 Governance & Compliance -->
+        <div class="section" id="section-1">
+            <button class="mark-complete-btn" onclick="toggleComplete(1)">Mark as Complete</button>
+            <h2>5.1 Governance & Compliance</h2>
+            
+            <p>Security governance establishes the framework for managing security through policies, standards, and procedures. Compliance ensures adherence to legal, regulatory, and contractual requirements.</p>
+            
+            <h3>Security Governance Framework</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Description</th>
+                        <th>Examples</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Policies</strong></td>
+                        <td>High-level statements of management intent</td>
+                        <td>Information Security Policy, Acceptable Use Policy</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Standards</strong></td>
+                        <td>Mandatory requirements supporting policies</td>
+                        <td>Password standards, encryption standards</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Procedures</strong></td>
+                        <td>Step-by-step instructions for tasks</td>
+                        <td>Incident response procedures, backup procedures</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Guidelines</strong></td>
+                        <td>Recommended best practices</td>
+                        <td>Security configuration guides, architecture guidelines</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Baselines</strong></td>
+                        <td>Minimum security configurations</td>
+                        <td>OS hardening baselines, network device baselines</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Key Regulations & Standards</h3>
+            <ul>
+                <li><strong>GDPR (General Data Protection Regulation):</strong> EU data privacy and protection</li>
+                <li><strong>HIPAA (Health Insurance Portability and Accountability Act):</strong> Healthcare data protection</li>
+                <li><strong>PCI DSS (Payment Card Industry Data Security Standard):</strong> Credit card data security</li>
+                <li><strong>SOX (Sarbanes-Oxley Act):</strong> Financial reporting and controls</li>
+                <li><strong>FISMA (Federal Information Security Management Act):</strong> US government security</li>
+                <li><strong>NIST Framework:</strong> Cybersecurity framework for critical infrastructure</li>
+            </ul>
+            
+            <h3>Compliance Management</h3>
+            <ul>
+                <li><strong>Audits:</strong> Formal examination of compliance with standards</li>
+                <li><strong>Assessments:</strong> Evaluation of security controls effectiveness</li>
+                <li><strong>Certification:</strong> Formal approval of system security</li>
+                <li><strong>Accreditation:</strong> Management authorization to operate</li>
+            </ul>
+
+            <div class="exam-tip">
+                <strong>Exam Tip</strong>
+                <p>Be familiar with the differences between policies, standards, procedures, and guidelines. Know which regulations apply to specific industries or data types.</p>
+            </div>
+
+            <div class="section-nav">
+                <button onclick="showSection(0)">← Previous</button>
+                <button onclick="showSection(2)">Next →</button>
+            </div>
+        </div>
+
+        <!-- Section 2: 5.2 Risk Management -->
+        <div class="section" id="section-2">
+            <button class="mark-complete-btn" onclick="toggleComplete(2)">Mark as Complete</button>
+            <h2>5.2 Risk Management</h2>
+            
+            <p>Risk management involves identifying, assessing, and prioritizing risks followed by coordinated application of resources to minimize, monitor, and control the probability or impact of unfortunate events.</p>
+            
+            <h3>Risk Management Process</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Phase</th>
+                        <th>Activities</th>
+                        <th>Outputs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Identification</strong></td>
+                        <td>Asset inventory, threat identification, vulnerability assessment</td>
+                        <td>Risk register, asset database</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Assessment</strong></td>
+                        <td>Likelihood analysis, impact analysis, risk calculation</td>
+                        <td>Risk matrix, risk scores</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Treatment</strong></td>
+                        <td>Risk mitigation, transfer, acceptance, avoidance</td>
+                        <td>Risk treatment plan, control implementation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Monitoring</strong></td>
+                        <td>Continuous monitoring, control assessment, risk reporting</td>
+                        <td>Risk dashboard, compliance reports</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Review</strong></td>
+                        <td>Periodic reassessment, process improvement</td>
+                        <td>Updated risk register, lessons learned</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Risk Treatment Strategies</h3>
+            <ul>
+                <li><strong>Mitigate:</strong> Implement controls to reduce risk
+                    <ul>
+                        <li>Example: Install firewall, implement encryption</li>
+                    </ul>
+                </li>
+                <li><strong>Transfer:</strong> Shift risk to third party
+                    <ul>
+                        <li>Example: Purchase cyber insurance, outsource operations</li>
+                    </ul>
+                </li>
+                <li><strong>Avoid:</strong> Eliminate the risk entirely
+                    <ul>
+                        <li>Example: Discontinue risky service, remove vulnerable system</li>
+                    </ul>
+                </li>
+                <li><strong>Accept:</strong> Acknowledge and live with the risk
+                    <ul>
+                        <li>Example: Low-impact risks with high mitigation costs</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <h3>Risk Analysis Methods</h3>
+            <ul>
+                <li><strong>Qualitative:</strong> Subjective assessment based on expertise
+                    <ul>
+                        <li>Uses scales (High/Medium/Low)</li>
+                        <li>Faster, less precise</li>
+                    </ul>
+                </li>
+                <li><strong>Quantitative:</strong> Numerical assessment using data
+                    <ul>
+                        <li>Uses monetary values and probabilities</li>
+                        <li>More precise, data-intensive</li>
+                        <li>Single Loss Expectancy (SLE) × Annual Rate of Occurrence (ARO) = ALE</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="note">
+                <strong>💡 Risk Appetite</strong>
+                <p>Every organization has a different risk appetite - the amount of risk they're willing to accept. Understanding this helps prioritize risk treatment efforts effectively.</p>
+            </div>
+
+            <div class="section-nav">
+                <button onclick="showSection(1)">← Previous</button>
+                <button onclick="showSection(3)">Next →</button>
+            </div>
+        </div>
+
+        <!-- Section 3: 5.3 Security Awareness -->
+        <div class="section" id="section-3">
+            <button class="mark-complete-btn" onclick="toggleComplete(3)">Mark as Complete</button>
+            <h2>5.3 Security Awareness & Training</h2>
+            
+            <p>Security awareness and training programs educate employees about security policies, procedures, and best practices to reduce human-related security risks.</p>
+            
+            <h3>Security Awareness Program Components</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Purpose</th>
+                        <th>Frequency</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>New Hire Training</strong></td>
+                        <td>Initial security orientation</td>
+                        <td>Once at hiring</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Annual Awareness</strong></td>
+                        <td>Refresh security knowledge</td>
+                        <td>Annual refresher</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Role-based Training</strong></td>
+                        <td>Job-specific security requirements</td>
+                        <td>As needed for role changes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phishing Simulations</strong></td>
+                        <td>Test and improve email security awareness</td>
+                        <td>Quarterly or monthly</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Security Campaigns</strong></td>
+                        <td>Focus on specific security topics</td>
+                        <td>Periodic (e.g., Cybersecurity Awareness Month)</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Key Training Topics</h3>
+            <ul>
+                <li><strong>Social Engineering:</strong> Recognizing and reporting phishing, pretexting, baiting</li>
+                <li><strong>Password Security:</strong> Strong passwords, password managers, multi-factor authentication</li>
+                <li><strong>Data Handling:</strong> Classification, proper storage, secure disposal</li>
+                <li><strong>Physical Security:</strong> Clean desk policy, badge usage, visitor procedures</li>
+                <li><strong>Incident Reporting:</strong> How and when to report security incidents</li>
+                <li><strong>Mobile Security:</strong> Secure device usage, public Wi-Fi risks</li>
+            </ul>
+            
+            <h3>Measuring Program Effectiveness</h3>
+            <ul>
+                <li><strong>Phishing Click Rates:</strong> Percentage of employees clicking simulated phishing emails</li>
+                <li><strong>Training Completion Rates:</strong> Percentage completing required training</li>
+                <li><strong>Incident Reporting:</strong> Increase in employee-reported security concerns</li>
+                <li><strong>Knowledge Assessments:</strong> Pre- and post-training testing</li>
+                <li><strong>Behavioral Observations:</strong> Compliance with security policies</li>
+            </ul>
+
+            <div class="important">
+                <strong>Human Factor</strong>
+                <p>People are often the weakest link in security. Effective awareness programs address this by making security part of organizational culture rather than just compliance requirements.</p>
+            </div>
+
+            <div class="section-nav">
+                <button onclick="showSection(2)">← Previous</button>
+                <button onclick="showSection(4)">Next →</button>
+            </div>
+        </div>
+
+        <!-- Section 4: 5.4 Business Continuity -->
+        <div class="section" id="section-4">
+            <button class="mark-complete-btn" onclick="toggleComplete(4)">Mark as Complete</button>
+            <h2>5.4 Business Continuity & Disaster Recovery</h2>
+            
+            <p>Business continuity ensures that essential business functions continue during and after a disaster, while disaster recovery focuses on restoring IT infrastructure and operations.</p>
+            
+            <h3>Key Planning Components</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Plan Type</th>
+                        <th>Focus</th>
+                        <th>Key Metrics</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Business Continuity Plan (BCP)</strong></td>
+                        <td>Maintaining business operations</td>
+                        <td>Maximum Tolerable Downtime (MTD)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Disaster Recovery Plan (DRP)</strong></td>
+                        <td>Restoring IT systems and data</td>
+                        <td>Recovery Time Objective (RTO), Recovery Point Objective (RPO)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Continuity of Operations Plan (COOP)</strong></td>
+                        <td>Essential functions during emergencies</td>
+                        <td>Essential functions identification</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Incident Response Plan (IRP)</strong></td>
+                        <td>Security incident handling</td>
+                        <td>Containment time, eradication success</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Recovery Strategies</h3>
+            <ul>
+                <li><strong>Hot Site:</strong> Fully operational duplicate facility
+                    <ul>
+                        <li>RTO: Minutes to hours</li>
+                        <li>Cost: Highest</li>
+                    </ul>
+                </li>
+                <li><strong>Warm Site:</strong> Partially configured facility
+                    <ul>
+                        <li>RTO: Hours to days</li>
+                        <li>Cost: Medium</li>
+                    </ul>
+                </li>
+                <li><strong>Cold Site:</strong> Basic infrastructure only
+                    <ul>
+                        <li>RTO: Days to weeks</li>
+                        <li>Cost: Lowest</li>
+                    </ul>
+                </li>
+                <li><strong>Cloud Recovery:</strong> Cloud-based recovery services
+                    <ul>
+                        <li>RTO: Variable (minutes to hours)</li>
+                        <li>Cost: Pay-per-use</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <h3>Testing & Maintenance</h3>
+            <ul>
+                <li><strong>Tabletop Exercise:</strong> Walk-through of plans with key personnel</li>
+                <li><strong>Functional Exercise:</strong> Simulated recovery without actual failover</li>
+                <li><strong>Full Interruption Test:</strong> Actual failover to recovery site</li>
+                <li><strong>Parallel Test:</strong> Run recovery systems alongside production</li>
+                <li><strong>Checklist Review:</strong> Verify plan completeness and accuracy</li>
+            </ul>
+
+            <div class="exam-tip">
+                <strong>Exam Tip</strong>
+                <p>Understand the differences between RTO (how long to restore) and RPO (how much data loss is acceptable). Be able to match recovery strategies with appropriate RTO/RPO requirements.</p>
+            </div>
+
+            <div class="section-nav">
+                <button onclick="showSection(3)">← Previous</button>
+                <button onclick="showSection(5)">Next →</button>
+            </div>
+        </div>
+
+        <!-- Section 5: 5.5 Data Protection -->
+        <div class="section" id="section-5">
+            <button class="mark-complete-btn" onclick="toggleComplete(5)">Mark as Complete</button>
+            <h2>5.5 Data Protection & Privacy</h2>
+            
+            <p>Data protection involves safeguarding important information from corruption, compromise, or loss, while privacy focuses on appropriate handling of personal information in accordance with legal and ethical requirements.</p>
+            
+            <h3>Data Classification Levels</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Classification</th>
+                        <th>Description</th>
+                        <th>Examples</th>
+                        <th>Handling Requirements</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Public</strong></td>
+                        <td>Information for general disclosure</td>
+                        <td>Marketing materials, press releases</td>
+                        <td>No special protection needed</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Internal</strong></td>
+                        <td>Company internal information</td>
+                        <td>Policies, procedures, internal communications</td>
+                        <td>Access controls, encryption in transit</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Confidential</strong></td>
+                        <td>Sensitive business information</td>
+                        <td>Financial data, strategic plans, intellectual property</td>
+                        <td>Strong access controls, encryption</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Restricted</strong></td>
+                        <td>Highly sensitive information</td>
+                        <td>Personal data, health records, payment card data</td>
+                        <td>Strict access controls, encryption, auditing</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Data Protection Methods</h3>
+            <ul>
+                <li><strong>Encryption:</strong> Data transformation to prevent unauthorized access
+                    <ul>
+                        <li>At rest: Full disk encryption, database encryption</li>
+                        <li>In transit: TLS, VPN, SSH</li>
+                        <li>In use: Homomorphic encryption, secure enclaves</li>
+                    </ul>
+                </li>
+                <li><strong>Data Loss Prevention (DLP):</strong> Systems to detect and prevent data exfiltration
+                    <ul>
+                        <li>Network DLP: Monitor data in motion</li>
+                        <li>Endpoint DLP: Monitor data on devices</li>
+                        <li>Cloud DLP: Monitor data in cloud services</li>
+                    </ul>
+                </li>
+                <li><strong>Data Masking:</strong> Hide sensitive data in non-production environments</li>
+                <li><strong>Tokenization:</strong> Replace sensitive data with non-sensitive tokens</li>
+                <li><strong>Data Retention:</strong> Policies for data storage duration and secure disposal</li>
+            </ul>
+            
+            <h3>Privacy Principles</h3>
+            <ul>
+                <li><strong>Data Minimization:</strong> Collect only necessary data</li>
+                <li><strong>Purpose Limitation:</strong> Use data only for specified purposes</li>
+                <li><strong>Consent:</strong> Obtain permission for data collection and use</li>
+                <li><strong>Right to Access:</strong> Individuals can access their data</li>
+                <li><strong>Right to be Forgotten:</strong> Individuals can request data deletion</li>
+                <li><strong>Privacy by Design:</strong> Build privacy into systems from the start</li>
+            </ul>
+
+            <div class="note">
+                <strong>💡 Data Lifecycle</strong>
+                <p>Effective data protection requires considering the entire data lifecycle: creation, storage, use, sharing, archiving, and destruction. Each stage requires appropriate security controls.</p>
+            </div>
+
+            <div class="section-nav">
+                <button onclick="showSection(4)">← Previous</button>
+                <button disabled>Next →</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

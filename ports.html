@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security+ SY0-701 Port Numbers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #2d2d2d;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .home-btn {
+            background: #e74c3c;
+            color: white;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .home-btn:hover {
+            background: #c0392b;
+        }
+
+        .ports-content {
+            padding: 2rem;
+        }
+
+        .category-section {
+            margin-bottom: 3rem;
+        }
+
+        .category-header {
+            color: #81c784;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #81c784;
+        }
+
+        .ports-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .port-item {
+            background: #3a3a3a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .port-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+
+        .port-number {
+            color: #64b5f6;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .port-service {
+            color: #e67e22;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .port-description {
+            color: #bdc3c7;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .port-protocol {
+            display: inline-block;
+            background: #34495e;
+            color: #ecf0f1;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .info-box {
+            background: #1e3a5f;
+            border-left: 4px solid #42a5f5;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 5px;
+        }
+
+        .info-box h3 {
+            color: #64b5f6;
+            margin-bottom: 1rem;
+        }
+
+        .info-box ul {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        .info-box li {
+            margin: 0.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .ports-content {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .category-header {
+                font-size: 1.5rem;
+            }
+
+            .ports-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Security+ SY0-701 Study Guide</h1>
+            <p class="subtitle">Essential Port Numbers Reference</p>
+            <a href="./index.html" class="home-btn">🏠 Study Hub</a>
+        </header>
+
+        <div class="ports-content">
+            <div class="info-box">
+                <h3>About Port Numbers</h3>
+                <p>Port numbers are used to identify specific processes or services running on a computer. Understanding common port numbers is essential for network security, firewall configuration, and troubleshooting.</p>
+                <ul>
+                    <li><strong>Well-known ports:</strong> 0-1023 (system processes)</li>
+                    <li><strong>Registered ports:</strong> 1024-49151 (user processes)</li>
+                    <li><strong>Dynamic/private ports:</strong> 49152-65535 (ephemeral ports)</li>
+                </ul>
+            </div>
+
+            <!-- Common Services -->
+            <div class="category-section">
+                <div class="category-header">Common Services</div>
+                <div class="ports-grid">
+                    <div class="port-item">
+                        <div class="port-number">Port 20/21</div>
+                        <div class="port-service">FTP (File Transfer Protocol)</div>
+                        <div class="port-description">File transfer protocol. Port 20 for data, 21 for control.</div>
+                        <div class="port-protocol">TCP</div>
+                    </div>
+                    <div class="port-item">
+                        <div class="port-number">Port 22</div>
+                        <div class="port-service">SSH (Secure Shell)</div>
+                        <div class="port-description">Secure remote administration and file transfer.</div>
+                        <div class="port-protocol">TCP</div>
+                    </div>
+                    <div class="port-item">
+                        <div class="port-number">Port 23</div>
+                        <div class="port-service">Telnet</div>
+                        <div class="port-description">Unencrypted remote administration (insecure).</div>
+                        <div class="port-protocol">TCP</div>
+                    </div>
+                    <div class="port-item">
+                        <div class="port-number">Port 25</div>
+                        <div class="port-service">SMTP (Simple Mail Transfer Protocol)</div>
+                        <div class="port-description">Email transmission between mail servers.</div>
+                        <div class="port-protocol">TCP</div>
+                    </div>
+                    <div class="port-item">
+                        <div class="port-number">Port 53</div>
+                        <div class="port-service">DNS (Domain Name System)</div>
+                        <div class="port-description">Domain name to IP address resolution.</div>
+                        <div class="port-protocol">TCP/UDP</div>
+                    </div>
+                    <div class="port-item">
+                        <div class="port-number">Port 80</div>
+                        <div class="port-service">HTTP (Hypertext Transfer Protocol)</div>
+                        <div class="port-description">Web traffic (unencrypted).</div>
+                        <div class="port-protocol">TCP</div>
+                    </div>
+                    <div class="port-item">
+                        <div class="port-number">Port 110</div>
+                        <div class="port-service">POP3 (Post Office Protocol v3)</div>
+                        <div class="port-description">Email retrieval from server to client.</div>
+                        <div class="port-protocol">TCP</div>
+                    </div>
+                    <div class="port-item">
+                        <div class="port-number">Port 143</div>
+                        <div class="port-service">IMAP (Internet Message Access Protocol)</div>
+                        <div class="port-description">Email management on server.</div>
+                        <div class="port-protocol">TCP</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secure Services -->
+            <div class="category-section">
+                <div class="category-header">Secure Services</div>
+                <div class="ports-grid">
+                    <div class="port-item">
+                        <div class="port-number">Port 443</div>
+                        <div class="port-service">HTTPS (HTTP Secure)</div>
+                        <div class="port-description">Encrypted web traffic using SSL/TLS.</div>
+                        <div class="port-protocol">TCP</div>
+                    </div>
+                    <div class="port-item">
+                        <div class="port-number">Port 993</div>
+                        <div class="port-service">IMAPS (IMAP Secure)</div>
+                        <div class="port-description">Secure version of IMAP.</div>
+                        <div class="port-protocol">TCP</div>
+                    </div>
+                    <div class="port-item">
+                        <div class="port-number">Port 995</div>
+                        <div class="port-service">POP3S (POP3 Secure)</div>
+                        <div class="port-description">Secure version of POP3.</div>
+                        <div class="port-protocol">TCP</div>
+                    </div>
+                    <div class="port-item">
+                        <div class="port-number">Port 22</div>
+                        <div class="port-service">SFTP (SSH File Transfer Protocol)</div>
+                        <div class="port-description">Secure file transfer over SSH.</div>
+                        <div class="port-protocol">TCP</div>
+                    </div>
+                    <div class="port-item">
+                        <div class="port-number">Port 989/990</div>
+                        <div class="port-service">FTPS (FTP Secure)</div>
+                        <div class="port-description">FTP over SSL/TLS.</div>
+                        <div class="port-protocol">TCP</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Remote Access -->
+            <div class="category-section">
+                <div class="category-header">Remote Access</div>
+                <div class="ports-grid">
+                    <div class="port-item">
+                        <div class="port-number">Port 3389</div>
+                        <div class="port-service">RDP (Remote Desktop Protocol)</div>
+                        <div class="port-description">Windows remote desktop access.</div>
+                        <div class="port-protocol">TCP</div>
+                    </div>
+                    <div class="port-item">
+                        <div class="port-number">Port 5900</div>
+                        <div class="port-service">VNC (Virtual Network Computing)</div>
+                        <div class="port-description">Cross-platform remote desktop.</div>
+                        <div class="port-protocol">TCP</div>
+                    </div>
+                    <div class="port-item">
+                        <div class="port-number">Port 1723</div>
+                        <div class="port-service">PPTP (Point-to-Point Tunneling Protocol)</div>
+                        <div class="port-description">VPN protocol (less secure).</div>
+                        <div class="port-protocol">TCP</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Network Services -->
+            <div class="category-section">
+                <div class="category-header">Network Services</div>
+                <div class="ports-grid">
+                    <div class="port-item">
+                        <div class="port-number">Port 67/68</div>
+                        <div class="port-service">DHCP (Dynamic Host Configuration Protocol)</div>
+                        <div class="port-description">Automatic IP address assignment.</div>
+                        <div class="port-protocol">UDP</div>
+                    </div>
+                    <div class="port-item">
+                        <div class="port-number">Port 69</div>
+                        <div class="port-service">TFTP (Trivial File Transfer Protocol)</div>
+                        <div class="port-description">Simple file transfer without authentication.</div>
+                        <div class="port-protocol">UDP</div>
+                    </div>
+                    <div class="port-item">
+                        <div class="port-number">Port 161/162</div>
+                        <div class="port-service">SNMP (Simple Network Management Protocol)</div>
+                        <div class="port-description">Network device monitoring and management.</div>
+                        <div class="port-protocol">UDP</div>
+                    </div>
+                    <div class="port-item">
+                        <div class="port-number">Port 389</div>
+                        <div class="port-service">LDAP (Lightweight Directory Access Protocol)</div>
+                        <div class="port-description">Directory services access.</div>
+                        <div class="port-protocol">TCP/UDP</div>
+                    </div>
+                    <div class="port-item">
+                        <div class="port-number">Port 636</div>
+                        <div class="port-service">LDAPS (LDAP Secure)</div>
+                        <div class="port-description">Secure LDAP over SSL.</div>
+                        <div class="port-protocol">TCP</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security & Management -->
+            <div class="category-section">
+                <div class="category-header">Security & Management</div>
+                <div class="ports-grid">
+                    <div class="port-item">
+                        <div class="port-number">Port 514</div>
+                        <div class="port-service">Syslog</div>
+                        <div class="port-description">System logging service.</div>
+                        <div class="port-protocol">UDP</div>
+                    </div>
+                    <div class="port-item">
+                        <div class="port-number">Port 1812/1813</div>
+                        <div class="port-service">RADIUS (Remote Authentication Dial-In User Service)</div>
+                        <div class="port-description">Network access authentication and accounting.</div>
+                        <div class="port-protocol">UDP</div>
+                    </div>
+                    <div class="port-item">
+                        <div class="port-number">Port 1645/1646</div>
+                        <div class="port-service">RADIUS (legacy)</div>
+                        <div class="port-description">Older RADIUS ports.</div>
+                        <div class="port-protocol">UDP</div>
+                    </div>
+                    <div class="port-item">
+                        <div class="port-number">Port 1701</div>
+                        <div class="port-service">L2TP (Layer 2 Tunneling Protocol)</div>
+                        <div class="port-description">VPN protocol often used with IPsec.</div>
+                        <div class="port-protocol">UDP</div>
+                    </div>
+                    <div class="port-item">
+                        <div class="port-number">Port 1720</div>
+                        <div class="port-service">H.323</div>
+                        <div class="port-description">VoIP and videoconferencing protocol.</div>
+                        <div class="port-protocol">TCP</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Database Services -->
+            <div class="category-section">
+                <div class="category-header">Database Services</div>
+                <div class="ports-grid">
+                    <div class="port-item">
+                        <div class="port-number">Port 1433</div>
+                        <div class="port-service">Microsoft SQL Server</div>
+                        <div class="port-description">Default SQL Server database port.</div>
+                        <div class="port-protocol">TCP</div>
+                    </div>
+                    <div class="port-item">
+                        <div class="port-number">Port 1521</div>
+                        <div class="port-service">Oracle Database</div>
+                        <div class="port-description">Default Oracle database port.</div>
+                        <div class="port-protocol">TCP</div>
+                    </div>
+                    <div class="port-item">
+                        <div class="port-number">Port 3306</div>
+                        <div class="port-service">MySQL</div>
+                        <div class="port-description">Default MySQL database port.</div>
+                        <div class="port-protocol">TCP</div>
+                    </div>
+                    <div class="port-item">
+                        <div class="port-number">Port 5432</div>
+                        <div class="port-service">PostgreSQL</div>
+                        <div class="port-description">Default PostgreSQL database port.</div>
+                        <div class="port-protocol">TCP</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3>Exam Tips</h3>
+                <ul>
+                    <li>Memorize ports for common services (HTTP, HTTPS, SSH, DNS, etc.)</li>
+                    <li>Understand which protocols use TCP vs UDP</li>
+                    <li>Know secure vs insecure versions of protocols (HTTP vs HTTPS)</li>
+                    <li>Remember port ranges: well-known (0-1023), registered (1024-49151), dynamic (49152-65535)</li>
+                    <li>Focus on ports mentioned in Security+ exam objectives</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

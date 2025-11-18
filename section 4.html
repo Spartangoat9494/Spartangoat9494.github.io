@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security+ SY0-701 Study Guide - Section 4.0</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        nav {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .nav-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #2980b9;
+        }
+
+        .nav-btn.active {
+            background: #e74c3c;
+        }
+
+        .nav-btn.completed {
+            background: #27ae60;
+        }
+
+        .nav-btn.completed::after {
+            content: ' ✓';
+        }
+
+        .home-btn {
+            background: #e74c3c;
+            color: white;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+
+        .home-btn:hover {
+            background: #c0392b;
+        }
+
+        .content-wrapper {
+            margin-top: 220px;
+            padding: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section {
+            display: none;
+            background: #2d2d2d;
+            color: #e0e0e0;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            animation: fadeIn 0.3s;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: #64b5f6;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #404040;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: #64b5f6;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        h4 {
+            color: #81c784;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .important, .note, .exam-tip {
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid;
+            border-radius: 5px;
+        }
+
+        .important {
+            border-color: #ef5350;
+            background: #3d2525;
+        }
+
+        .note {
+            border-color: #42a5f5;
+            background: #1e3a5f;
+        }
+
+        .exam-tip {
+            border-color: #ffa726;
+            background: #3d2f1f;
+        }
+
+        .important strong, .note strong, .exam-tip strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: #1a1a1a;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border: 1px solid #404040;
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background: #252525;
+        }
+
+        code {
+            background: #3a3a3a;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #a5d6a7;
+        }
+
+        .mark-complete-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+            float: right;
+            margin-bottom: 1rem;
+        }
+
+        .mark-complete-btn:hover {
+            background: #229954;
+        }
+
+        .mark-complete-btn.completed {
+            background: #95a5a6;
+        }
+
+        .mark-complete-btn.completed::before {
+            content: '✓ ';
+        }
+
+        .section-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 2px solid #404040;
+            clear: both;
+        }
+
+        .section-nav button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .section-nav button:hover:not(:disabled) {
+            background: #2980b9;
+        }
+
+        .section-nav button:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                margin-top: 260px;
+                padding: 1rem;
+            }
+
+            .nav-buttons {
+                font-size: 0.8rem;
+            }
+
+            .nav-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .home-btn {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Load completion status from localStorage
+        function loadCompletionStatus() {
+            const completed = JSON.parse(localStorage.getItem('section4_completed') || '[]');
+            completed.forEach(index => {
+                const btn = document.querySelector(`button[onclick="showSection(${index})"]`);
+                if (btn) btn.classList.add('completed');
+                
+                const markBtn = document.getElementById(`section-${index}`)?.querySelector('.mark-complete-btn');
+                if (markBtn) {
+                    markBtn.classList.add('completed');
+                    markBtn.textContent = 'Completed';
+                }
+            });
+        }
+
+        // Show specific section
+        function showSection(index) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all nav buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(`section-${index}`).classList.add('active');
+            
+            // Add active class to clicked button
+            document.querySelectorAll('.nav-btn')[index].classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Toggle completion status
+        function toggleComplete(index) {
+            const completed = JSON.parse(localStorage.getItem('section4_completed') || '[]');
+            const navBtn = document.querySelector(`button[onclick="showSection(${index})"]`);
+            const markBtn = document.getElementById(`section-${index}`).querySelector('.mark-complete-btn');
+            
+            if (completed.includes(index)) {
+                // Remove from completed
+                const newCompleted = completed.filter(i => i !== index);
+                localStorage.setItem('section4_completed', JSON.stringify(newCompleted));
+                navBtn.classList.remove('completed');
+                markBtn.classList.remove('completed');
+                markBtn.textContent = 'Mark as Complete';
+            } else {
+                // Add to completed
+                completed.push(index);
+                localStorage.setItem('section4_completed', JSON.stringify(completed));
+                navBtn.classList.add('completed');
+                markBtn.classList.add('completed');
+                markBtn.textContent = 'Completed';
+            }
+        }
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadCompletionStatus();
+        });
+    </script>
+
+    <nav>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <div>
+                <h1>Security+ SY0-701 Study Guide</h1>
+                <p><strong>Section 4.0: Security Operations</strong></p>
+            </div>
+            <a href="./index.html" class="home-btn">🏠 Study Hub</a>
+        </div>
+        <div class="nav-buttons">
+            <button class="nav-btn active" onclick="showSection(0)">Overview</button>
+            <button class="nav-btn" onclick="showSection(1)">4.1 Security Tools</button>
+            <button class="nav-btn" onclick="showSection(2)">4.2 Incident Response</button>
+            <button class="nav-btn" onclick="showSection(3)">4.3 Digital Forensics</button>
+            <button class="nav-btn" onclick="showSection(4)">4.4 Investigations</button>
+            <button class="nav-btn" onclick="showSection(5)">4.5 Vulnerability Management</button>
+        </div>
+    </nav>
+
+    <div class="content-wrapper">
+        <!-- Section 0: Overview -->
+        <div class="section active" id="section-0">
+            <button class="mark-complete-btn" onclick="toggleComplete(0)">Mark as Complete</button>
+            <h2>4.0 Security Operations</h2>
+            
+            <p>Security Operations focuses on the day-to-day activities required to maintain security, detect incidents, respond to threats, and conduct investigations. This section covers tools, processes, and procedures for effective security operations.</p>
+            
+            <div class="important">
+                <strong>Important</strong>
+                <p>This section represents approximately 22% of the Security+ exam and covers practical, hands-on security skills that are essential for security professionals.</p>
+            </div>
+
+            <h3>What You'll Learn</h3>
+            <ul>
+                <li>🛠️ Security Tools - Monitoring, analysis, and protection technologies</li>
+                <li>🚨 Incident Response - Detection, containment, and recovery processes</li>
+                <li>🔍 Digital Forensics - Evidence collection, preservation, and analysis</li>
+                <li>🕵️ Investigations - Techniques for security incident analysis</li>
+                <li>📊 Vulnerability Management - Scanning, assessment, and remediation</li>
+            </ul>
+
+            <div class="note">
+                <strong>Study Tip</strong>
+                <p>Focus on understanding how different security tools work together and the proper sequence of actions during incident response. Many questions will test your ability to select appropriate tools and procedures for specific scenarios.</p>
+            </div>
+
+            <div class="section-nav">
+                <button disabled>← Previous</button>
+                <button onclick="showSection(1)">Next →</button>
+            </div>
+        </div>
+
+        <!-- Section 1: 4.1 Security Tools -->
+        <div class="section" id="section-1">
+            <button class="mark-complete-btn" onclick="toggleComplete(1)">Mark as Complete</button>
+            <h2>4.1 Security Tools & Technologies</h2>
+            
+            <p>Security professionals use various tools to monitor, detect, analyze, and respond to security threats. Understanding these tools and their appropriate use is critical for effective security operations.</p>
+            
+            <h3>Monitoring & Analysis Tools</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tool Category</th>
+                        <th>Purpose</th>
+                        <th>Examples</th>
+                        <th>Key Features</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>SIEM</strong></td>
+                        <td>Centralized log collection and analysis</td>
+                        <td>Splunk, ArcSight, QRadar</td>
+                        <td>Real-time monitoring, correlation, alerting</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SOAR</strong></td>
+                        <td>Security orchestration and automation</td>
+                        <td>Demisto, Phantom, Swimlane</td>
+                        <td>Playbook automation, workflow management</td>
+                    </tr>
+                    <tr>
+                        <td><strong>EDR</strong></td>
+                        <td>Endpoint detection and response</td>
+                        <td>CrowdStrike, Carbon Black, SentinelOne</td>
+                        <td>Behavioral analysis, threat hunting</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NDR</strong></td>
+                        <td>Network detection and response</td>
+                        <td>Darktrace, ExtraHop, Vectra</td>
+                        <td>Network traffic analysis, anomaly detection</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vulnerability Scanners</strong></td>
+                        <td>Identifying system vulnerabilities</td>
+                        <td>Nessus, Qualys, OpenVAS</td>
+                        <td>CVEs, compliance checking, risk scoring</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Network Security Tools</h3>
+            <ul>
+                <li><strong>Packet Analyzers:</strong> Wireshark, tcpdump - Network traffic capture and analysis</li>
+                <li><strong>Port Scanners:</strong> Nmap, Masscan - Network discovery and service enumeration</li>
+                <li><strong>Network Mappers:</strong> Nmap, Zenmap - Network topology discovery</li>
+                <li><strong>Protocol Analyzers:</strong> Wireshark, tshark - Deep packet inspection</li>
+                <li><strong>NetFlow Analyzers:</strong> SolarWinds, PRTG - Network traffic monitoring</li>
+            </ul>
+            
+            <h3>Endpoint Security Tools</h3>
+            <ul>
+                <li><strong>Antivirus/Antimalware:</strong> Signature-based detection</li>
+                <li><strong>Host-based Firewalls:</strong> Windows Firewall, iptables</li>
+                <li><strong>Application Control:</strong> Whitelisting/blacklisting</li>
+                <li><strong>System Monitoring:</strong> Process explorers, registry monitors</li>
+                <li><strong>File Integrity Monitoring:</strong> Tripwire, OSSEC</li>
+            </ul>
+
+            <div class="exam-tip">
+                <strong>Exam Tip</strong>
+                <p>Be prepared to match security tools with their primary functions and identify which tool would be most appropriate for specific scenarios or investigation types.</p>
+            </div>
+
+            <div class="section-nav">
+                <button onclick="showSection(0)">← Previous</button>
+                <button onclick="showSection(2)">Next →</button>
+            </div>
+        </div>
+
+        <!-- Section 2: 4.2 Incident Response -->
+        <div class="section" id="section-2">
+            <button class="mark-complete-btn" onclick="toggleComplete(2)">Mark as Complete</button>
+            <h2>4.2 Incident Response</h2>
+            
+            <p>Incident response involves the processes and procedures for detecting, responding to, and recovering from security incidents in an organized and effective manner.</p>
+            
+            <h3>NIST Incident Response Lifecycle</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Phase</th>
+                        <th>Key Activities</th>
+                        <th>Objectives</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Preparation</strong></td>
+                        <td>Develop policies, train team, acquire tools</td>
+                        <td>Readiness for incident response</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Detection & Analysis</strong></td>
+                        <td>Monitor, identify, validate incidents</td>
+                        <td>Early detection, accurate assessment</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Containment</strong></td>
+                        <td>Isolate affected systems, prevent spread</td>
+                        <td>Limit damage, preserve evidence</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Eradication</strong></td>
+                        <td>Remove malicious content, close vulnerabilities</td>
+                        <td>Eliminate threat causes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Recovery</strong></td>
+                        <td>Restore systems, validate functionality</td>
+                        <td>Return to normal operations</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lessons Learned</strong></td>
+                        <td>Review incident, update procedures</td>
+                        <td>Improve future response</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Incident Severity Classification</h3>
+            <ul>
+                <li><strong>Critical:</strong> Widespread impact, business operations severely affected</li>
+                <li><strong>High:</strong> Significant impact on business functions</li>
+                <li><strong>Medium:</strong> Limited impact, contained to specific systems</li>
+                <li><strong>Low:</strong> Minimal impact, easily contained and resolved</li>
+            </ul>
+            
+            <h3>Incident Response Team Roles</h3>
+            <ul>
+                <li><strong>Incident Response Manager:</strong> Overall coordination and decision-making</li>
+                <li><strong>Security Analysts:</strong> Technical investigation and analysis</li>
+                <li><strong>Forensics Specialists:</strong> Evidence collection and preservation</li>
+                <li><strong>Legal Counsel:</strong> Legal and compliance guidance</li>
+                <li><strong>Communications Lead:</strong> Internal and external communications</li>
+            </ul>
+            
+            <h3>Containment Strategies</h3>
+            <ul>
+                <li><strong>Short-term Containment:</strong> Immediate isolation (disconnect from network)</li>
+                <li><strong>Long-term Containment:</strong> Temporary fixes while rebuilding systems</li>
+                <li><strong>Selective Containment:</strong> Isolate specific components or segments</li>
+                <li><strong>System Preservation:</strong> Maintain systems for evidence collection</li>
+            </ul>
+
+            <div class="note">
+                <strong>💡 Best Practice</strong>
+                <p>Always prioritize containment based on business impact. Critical systems should be isolated first to prevent further damage to essential operations.</p>
+            </div>
+
+            <div class="section-nav">
+                <button onclick="showSection(1)">← Previous</button>
+                <button onclick="showSection(3)">Next →</button>
+            </div>
+        </div>
+
+        <!-- Section 3: 4.3 Digital Forensics -->
+        <div class="section" id="section-3">
+            <button class="mark-complete-btn" onclick="toggleComplete(3)">Mark as Complete</button>
+            <h2>4.3 Digital Forensics</h2>
+            
+            <p>Digital forensics involves the collection, preservation, analysis, and presentation of digital evidence in a manner that maintains its integrity and admissibility in legal proceedings.</p>
+            
+            <h3>Forensic Process</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Phase</th>
+                        <th>Activities</th>
+                        <th>Tools</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Identification</strong></td>
+                        <td>Recognize potential evidence sources</td>
+                        <td>SIEM, EDR, log analysis</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Preservation</strong></td>
+                        <td>Secure and isolate evidence</td>
+                        <td>Write blockers, forensic imaging</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Collection</strong></td>
+                        <td>Gather evidence using proper procedures</td>
+                        <td>FTK Imager, dd, forensic duplicators</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Examination</strong></td>
+                        <td>Analyze evidence for relevant information</td>
+                        <td>Autopsy, FTK, EnCase</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Analysis</strong></td>
+                        <td>Interpret findings and draw conclusions</td>
+                        <td>Timeline analysis, data correlation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Presentation</strong></td>
+                        <td>Document and present findings</td>
+                        <td>Reports, expert testimony</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Evidence Types & Handling</h3>
+            <ul>
+                <li><strong>Volatile Evidence:</strong> RAM, network connections, running processes
+                    <ul>
+                        <li>Collect first (order of volatility)</li>
+                        <li>Tools: Memory dumpers, live response tools</li>
+                    </ul>
+                </li>
+                <li><strong>Non-volatile Evidence:</strong> Hard drives, SSDs, backup tapes
+                    <ul>
+                        <li>Create forensic images</li>
+                        <li>Use write blockers</li>
+                    </ul>
+                </li>
+                <li><strong>Network Evidence:</strong> Packet captures, netflow data, firewall logs
+                    <ul>
+                        <li>Preserve with timestamps</li>
+                        <li>Maintain chain of custody</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <h3>Legal Considerations</h3>
+            <ul>
+                <li><strong>Chain of Custody:</strong> Document evidence handling from collection to presentation</li>
+                <li><strong>Legal Hold:</strong> Preserve evidence when litigation is anticipated</li>
+                <li><strong>Search Authority:</strong> Proper authorization for evidence collection</li>
+                <li><strong>Admissibility:</strong> Ensure evidence meets legal standards</li>
+            </ul>
+
+            <div class="important">
+                <strong>Evidence Integrity</strong>
+                <p>Always create forensic copies of original evidence and work with the copies. Use cryptographic hashing (MD5, SHA-256) to verify evidence integrity throughout the process.</p>
+            </div>
+
+            <div class="section-nav">
+                <button onclick="showSection(2)">← Previous</button>
+                <button onclick="showSection(4)">Next →</button>
+            </div>
+        </div>
+
+        <!-- Section 4: 4.4 Investigations -->
+        <div class="section" id="section-4">
+            <button class="mark-complete-btn" onclick="toggleComplete(4)">Mark as Complete</button>
+            <h2>4.4 Security Investigations</h2>
+            
+            <p>Security investigations involve systematic examination of security incidents to determine causes, impacts, and responsible parties while gathering evidence for potential legal action.</p>
+            
+            <h3>Investigation Types</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Investigation Type</th>
+                        <th>Focus</th>
+                        <th>Key Considerations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Malware Analysis</strong></td>
+                        <td>Reverse engineering malicious software</td>
+                        <td>Sandboxing, behavioral analysis, code analysis</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Network Intrusion</strong></td>
+                        <td>Unauthorized network access</td>
+                        <td>Log analysis, packet capture review, timeline reconstruction</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data Breach</strong></td>
+                        <td>Unauthorized data access/exfiltration</td>
+                        <td>Data classification, access logs, data flow analysis</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Insider Threat</strong></td>
+                        <td>Malicious actions by authorized users</td>
+                        <td>User behavior analytics, access pattern analysis</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fraud Investigation</strong></td>
+                        <td>Financial or identity fraud</td>
+                        <td>Transaction analysis, identity verification</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Investigation Techniques</h3>
+            <ul>
+                <li><strong>Timeline Analysis:</strong> Reconstruct event sequences</li>
+                <li><strong>Root Cause Analysis:</strong> Identify underlying causes</li>
+                <li><strong>Indicators of Compromise (IOCs):</strong> Artifacts indicating security breaches</li>
+                <li><strong>Threat Intelligence:</strong> Context about attackers and methods</li>
+                <li><strong>Data Correlation:</strong> Connect related events across systems</li>
+            </ul>
+            
+            <h3>Stakeholder Communication</h3>
+            <ul>
+                <li><strong>Executive Leadership:</strong> Business impact, risk assessment</li>
+                <li><strong>Legal Counsel:</strong> Legal implications, evidence requirements</li>
+                <li><strong>Law Enforcement:</strong> Criminal aspects, jurisdiction</li>
+                <li><strong>Regulatory Bodies:</strong> Compliance reporting requirements</li>
+                <li><strong>Affected Parties:</strong> Notification obligations</li>
+            </ul>
+
+            <div class="exam-tip">
+                <strong>Exam Tip</strong>
+                <p>Understand the different types of investigations and the specific evidence sources and analysis techniques relevant to each. Know when to involve different stakeholders.</p>
+            </div>
+
+            <div class="section-nav">
+                <button onclick="showSection(3)">← Previous</button>
+                <button onclick="showSection(5)">Next →</button>
+            </div>
+        </div>
+
+        <!-- Section 5: 4.5 Vulnerability Management -->
+        <div class="section" id="section-5">
+            <button class="mark-complete-btn" onclick="toggleComplete(5)">Mark as Complete</button>
+            <h2>4.5 Vulnerability Management</h2>
+            
+            <p>Vulnerability management is the continuous process of identifying, classifying, prioritizing, remediating, and mitigating vulnerabilities in systems and applications.</p>
+            
+            <h3>Vulnerability Management Lifecycle</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Phase</th>
+                        <th>Activities</th>
+                        <th>Outputs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Discovery</strong></td>
+                        <td>Asset inventory, vulnerability scanning</td>
+                        <td>Asset database, initial scan results</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Prioritization</strong></td>
+                        <td>Risk assessment, business impact analysis</td>
+                        <td>Risk-ranked vulnerability list</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Remediation</strong></td>
+                        <td>Patching, configuration changes</td>
+                        <td>Change requests, implementation plans</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Verification</strong></td>
+                        <td>Rescanning, validation testing</td>
+                        <td>Remediation confirmation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Reporting</strong></td>
+                        <td>Metrics, compliance reporting</td>
+                        <td>Management reports, trend analysis</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Vulnerability Assessment Tools</h3>
+            <ul>
+                <li><strong>Network Scanners:</strong> Nessus, Qualys, OpenVAS</li>
+                <li><strong>Web Application Scanners:</strong> Burp Suite, OWASP ZAP, Acunetix</li>
+                <li><strong>Container Scanners:</strong> Clair, Trivy, Anchore</li>
+                <li><strong>Cloud Security Scanners:</strong> Scout Suite, Prowler, CloudSploit</li>
+                <li><strong>Configuration Compliance:</strong> CIS-CAT, OpenSCAP</li>
+            </ul>
+            
+            <h3>Risk Prioritization Framework</h3>
+            <ul>
+                <li><strong>CVSS (Common Vulnerability Scoring System):</strong> Standardized vulnerability scoring
+                    <ul>
+                        <li>Base Score: Intrinsic characteristics</li>
+                        <li>Temporal Score: Changes over time</li>
+                        <li>Environmental Score: Organization-specific impact</li>
+                    </ul>
+                </li>
+                <li><strong>Risk = Threat × Vulnerability × Impact</strong></li>
+                <li><strong>Business Context:</strong> Critical systems, sensitive data, compliance requirements</li>
+            </ul>
+            
+            <h3>Remediation Strategies</h3>
+            <ul>
+                <li><strong>Patching:</strong> Vendor updates, security patches</li>
+                <li><strong>Compensating Controls:</strong> Alternative protections when patching isn't possible</li>
+                <li><strong>Configuration Changes:</strong> Security hardening, access restrictions</li>
+                <li><strong>Architectural Changes:</strong> Network segmentation, system redesign</li>
+            </ul>
+
+            <div class="note">
+                <strong>💡 Continuous Process</strong>
+                <p>Vulnerability management is not a one-time project but a continuous cycle. Regular scanning, timely remediation, and ongoing monitoring are essential for maintaining security posture.</p>
+            </div>
+
+            <div class="section-nav">
+                <button onclick="showSection(4)">← Previous</button>
+                <button disabled>Next →</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

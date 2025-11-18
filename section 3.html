@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security+ SY0-701 Study Guide - Section 3.0</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        nav {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .nav-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #2980b9;
+        }
+
+        .nav-btn.active {
+            background: #e74c3c;
+        }
+
+        .nav-btn.completed {
+            background: #27ae60;
+        }
+
+        .nav-btn.completed::after {
+            content: ' ✓';
+        }
+
+        .home-btn {
+            background: #e74c3c;
+            color: white;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+
+        .home-btn:hover {
+            background: #c0392b;
+        }
+
+        .content-wrapper {
+            margin-top: 220px;
+            padding: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section {
+            display: none;
+            background: #2d2d2d;
+            color: #e0e0e0;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            animation: fadeIn 0.3s;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: #64b5f6;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #404040;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: #64b5f6;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        h4 {
+            color: #81c784;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .important, .note, .exam-tip {
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid;
+            border-radius: 5px;
+        }
+
+        .important {
+            border-color: #ef5350;
+            background: #3d2525;
+        }
+
+        .note {
+            border-color: #42a5f5;
+            background: #1e3a5f;
+        }
+
+        .exam-tip {
+            border-color: #ffa726;
+            background: #3d2f1f;
+        }
+
+        .important strong, .note strong, .exam-tip strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: #1a1a1a;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border: 1px solid #404040;
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background: #252525;
+        }
+
+        code {
+            background: #3a3a3a;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #a5d6a7;
+        }
+
+        .mark-complete-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+            float: right;
+            margin-bottom: 1rem;
+        }
+
+        .mark-complete-btn:hover {
+            background: #229954;
+        }
+
+        .mark-complete-btn.completed {
+            background: #95a5a6;
+        }
+
+        .mark-complete-btn.completed::before {
+            content: '✓ ';
+        }
+
+        .section-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 2px solid #404040;
+            clear: both;
+        }
+
+        .section-nav button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .section-nav button:hover:not(:disabled) {
+            background: #2980b9;
+        }
+
+        .section-nav button:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                margin-top: 260px;
+                padding: 1rem;
+            }
+
+            .nav-buttons {
+                font-size: 0.8rem;
+            }
+
+            .nav-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .home-btn {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Load completion status from localStorage
+        function loadCompletionStatus() {
+            const completed = JSON.parse(localStorage.getItem('section3_completed') || '[]');
+            completed.forEach(index => {
+                const btn = document.querySelector(`button[onclick="showSection(${index})"]`);
+                if (btn) btn.classList.add('completed');
+                
+                const markBtn = document.getElementById(`section-${index}`)?.querySelector('.mark-complete-btn');
+                if (markBtn) {
+                    markBtn.classList.add('completed');
+                    markBtn.textContent = 'Completed';
+                }
+            });
+        }
+
+        // Show specific section
+        function showSection(index) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all nav buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(`section-${index}`).classList.add('active');
+            
+            // Add active class to clicked button
+            document.querySelectorAll('.nav-btn')[index].classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Toggle completion status
+        function toggleComplete(index) {
+            const completed = JSON.parse(localStorage.getItem('section3_completed') || '[]');
+            const navBtn = document.querySelector(`button[onclick="showSection(${index})"]`);
+            const markBtn = document.getElementById(`section-${index}`).querySelector('.mark-complete-btn');
+            
+            if (completed.includes(index)) {
+                // Remove from completed
+                const newCompleted = completed.filter(i => i !== index);
+                localStorage.setItem('section3_completed', JSON.stringify(newCompleted));
+                navBtn.classList.remove('completed');
+                markBtn.classList.remove('completed');
+                markBtn.textContent = 'Mark as Complete';
+            } else {
+                // Add to completed
+                completed.push(index);
+                localStorage.setItem('section3_completed', JSON.stringify(completed));
+                navBtn.classList.add('completed');
+                markBtn.classList.add('completed');
+                markBtn.textContent = 'Completed';
+            }
+        }
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadCompletionStatus();
+        });
+    </script>
+
+    <nav>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <div>
+                <h1>Security+ SY0-701 Study Guide</h1>
+                <p><strong>Section 3.0: Security Architecture</strong></p>
+            </div>
+            <a href="./index.html" class="home-btn">🏠 Study Hub</a>
+        </div>
+        <div class="nav-buttons">
+            <button class="nav-btn active" onclick="showSection(0)">Overview</button>
+            <button class="nav-btn" onclick="showSection(1)">3.1 Architecture Models</button>
+            <button class="nav-btn" onclick="showSection(2)">3.2 Infrastructure</button>
+            <button class="nav-btn" onclick="showSection(3)">3.3 Resiliency</button>
+            <button class="nav-btn" onclick="showSection(4)">3.4 Embedded Systems</button>
+        </div>
+    </nav>
+
+    <div class="content-wrapper">
+        <!-- Section 0: Overview -->
+        <div class="section active" id="section-0">
+            <button class="mark-complete-btn" onclick="toggleComplete(0)">Mark as Complete</button>
+            <h2>3.0 Security Architecture</h2>
+            
+            <p>Security Architecture focuses on designing, implementing, and maintaining secure enterprise infrastructure. This section covers security models, network infrastructure, resilience strategies, and embedded systems security.</p>
+            
+            <div class="important">
+                <strong>Important</strong>
+                <p>This section represents approximately 18% of the Security+ exam and covers critical concepts for designing secure network architectures.</p>
+            </div>
+
+            <h3>What You'll Learn</h3>
+            <ul>
+                <li>🏛️ Security Architecture Models - Frameworks and design principles</li>
+                <li>🌐 Secure Network Infrastructure - Segmentation, zoning, and secure protocols</li>
+                <li>🛡️ Resilience & High Availability - Redundancy, fault tolerance, and recovery</li>
+                <li>🔌 Embedded Systems & IoT - Specialized security for connected devices</li>
+                <li>☁️ Cloud & Virtualization - Security considerations for modern infrastructure</li>
+            </ul>
+
+            <div class="note">
+                <strong>Study Tip</strong>
+                <p>Focus on understanding how different architectural components work together to create defense in depth. Many questions will test your ability to select appropriate security controls for specific scenarios.</p>
+            </div>
+
+            <div class="section-nav">
+                <button disabled>← Previous</button>
+                <button onclick="showSection(1)">Next →</button>
+            </div>
+        </div>
+
+        <!-- Section 1: 3.1 Architecture Models -->
+        <div class="section" id="section-1">
+            <button class="mark-complete-btn" onclick="toggleComplete(1)">Mark as Complete</button>
+            <h2>3.1 Security Architecture Models</h2>
+            
+            <p>Security architecture models provide frameworks for designing and implementing secure systems. Understanding these models is essential for creating effective security controls.</p>
+            
+            <h3>Common Security Models</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Description</th>
+                        <th>Key Principle</th>
+                        <th>Use Case</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Zero Trust</strong></td>
+                        <td>Never trust, always verify; assumes breach</td>
+                        <td>Verify explicitly, least privilege</td>
+                        <td>Modern networks, cloud environments</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Defense in Depth</strong></td>
+                        <td>Layered security controls</td>
+                        <td>Multiple protection layers</td>
+                        <td>Enterprise networks, critical systems</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Trust but Verify</strong></td>
+                        <td>Traditional perimeter-based security</td>
+                        <td>Trust internal, verify external</td>
+                        <td>Legacy networks, simple environments</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bell-LaPadula</strong></td>
+                        <td>Multi-level security for confidentiality</td>
+                        <td>No read up, no write down</td>
+                        <td>Military, government systems</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Biba</strong></td>
+                        <td>Integrity-focused security model</td>
+                        <td>No write up, no read down</td>
+                        <td>Financial systems, data integrity</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Zero Trust Architecture Components</h3>
+            <ul>
+                <li><strong>Identity & Access Management:</strong> Multi-factor authentication, identity providers</li>
+                <li><strong>Device Health:</strong> Compliance checking, security posture assessment</li>
+                <li><strong>Microsegmentation:</strong> Granular network segmentation</li>
+                <li><strong>Policy Enforcement:</strong> Conditional access, continuous monitoring</li>
+                <li><strong>Automation & Orchestration:</strong> Automated response to threats</li>
+            </ul>
+            
+            <h3>Cloud Security Models</h3>
+            <ul>
+                <li><strong>Shared Responsibility Model:</strong>
+                    <ul>
+                        <li><strong>IaaS:</strong> Provider secures infrastructure, customer secures OS and above</li>
+                        <li><strong>PaaS:</strong> Provider secures platform, customer secures applications</li>
+                        <li><strong>SaaS:</strong> Provider secures everything except data and user access</li>
+                    </ul>
+                </li>
+                <li><strong>Cloud Deployment Models:</strong>
+                    <ul>
+                        <li><strong>Public Cloud:</strong> Multi-tenant, provider-managed infrastructure</li>
+                        <li><strong>Private Cloud:</strong> Single-tenant, dedicated infrastructure</li>
+                        <li><strong>Hybrid Cloud:</strong> Combination of public and private clouds</li>
+                        <li><strong>Community Cloud:</strong> Shared by several organizations with common concerns</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="exam-tip">
+                <strong>Exam Tip</strong>
+                <p>Be prepared to identify which security model is most appropriate for given scenarios. Zero Trust is heavily emphasized in the current exam objectives.</p>
+            </div>
+
+            <div class="section-nav">
+                <button onclick="showSection(0)">← Previous</button>
+                <button onclick="showSection(2)">Next →</button>
+            </div>
+        </div>
+
+        <!-- Section 2: 3.2 Secure Infrastructure -->
+        <div class="section" id="section-2">
+            <button class="mark-complete-btn" onclick="toggleComplete(2)">Mark as Complete</button>
+            <h2>3.2 Secure Infrastructure</h2>
+            
+            <p>Secure infrastructure involves designing and implementing network architectures with built-in security controls to protect against threats and ensure proper segmentation.</p>
+            
+            <h3>Network Segmentation & Zoning</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Zone</th>
+                        <th>Purpose</th>
+                        <th>Security Level</th>
+                        <th>Examples</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Public Zone</strong></td>
+                        <td>Internet-facing services</td>
+                        <td>Low</td>
+                        <td>Web servers, DNS servers</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DMZ</strong></td>
+                        <td>Semi-trusted services</td>
+                        <td>Medium</td>
+                        <td>Email relays, proxy servers</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Private Zone</strong></td>
+                        <td>Internal corporate network</td>
+                        <td>High</td>
+                        <td>Workstations, file servers</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Management Zone</strong></td>
+                        <td>Network administration</td>
+                        <td>Very High</td>
+                        <td>Administrative workstations, jump servers</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Restricted Zone</strong></td>
+                        <td>Sensitive data and systems</td>
+                        <td>Highest</td>
+                        <td>Databases, financial systems</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Network Security Controls</h3>
+            <ul>
+                <li><strong>Firewalls:</strong>
+                    <ul>
+                        <li><strong>Stateless:</strong> Simple packet filtering based on headers</li>
+                        <li><strong>Stateful:</strong> Tracks connection state and context</li>
+                        <li><strong>Next-Generation (NGFW):</strong> Application awareness, intrusion prevention</li>
+                        <li><strong>Web Application (WAF):</strong> Protects web applications from attacks</li>
+                    </ul>
+                </li>
+                <li><strong>Network Access Control (NAC):</strong>
+                    <ul>
+                        <li>802.1X authentication for network access</li>
+                        <li>Device health checking and compliance</li>
+                        <li>Guest network isolation</li>
+                    </ul>
+                </li>
+                <li><strong>Virtual Private Networks (VPNs):</strong>
+                    <ul>
+                        <li><strong>Site-to-Site:</strong> Connects entire networks</li>
+                        <li><strong>Remote Access:</strong> Connects individual users</li>
+                        <li><strong>SSL/TLS VPN:</strong> Web-based remote access</li>
+                        <li><strong>IPSec:</strong> Network layer encryption</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <h3>Secure Protocols & Services</h3>
+            <ul>
+                <li><strong>DNS Security:</strong> DNSSEC for authenticity, DNS over HTTPS/TLS for privacy</li>
+                <li><strong>Email Security:</strong> SPF, DKIM, DMARC for email authentication</li>
+                <li><strong>Secure File Transfer:</strong> SFTP, FTPS, SCP instead of plain FTP</li>
+                <li><strong>Network Monitoring:</strong> NetFlow, sFlow for traffic analysis</li>
+                <li><strong>Wireless Security:</strong> WPA3, 802.1X, EAP-TLS for secure Wi-Fi</li>
+            </ul>
+
+            <div class="note">
+                <strong>💡 Design Principle</strong>
+                <p>Always follow the principle of least privilege when designing network segmentation. Users and systems should only have access to the resources they absolutely need.</p>
+            </div>
+
+            <div class="section-nav">
+                <button onclick="showSection(1)">← Previous</button>
+                <button onclick="showSection(3)">Next →</button>
+            </div>
+        </div>
+
+        <!-- Section 3: 3.3 Resilience & High Availability -->
+        <div class="section" id="section-3">
+            <button class="mark-complete-btn" onclick="toggleComplete(3)">Mark as Complete</button>
+            <h2>3.3 Resilience & High Availability</h2>
+            
+            <p>Resilience ensures that systems can withstand and recover from failures, attacks, or disasters. High availability designs minimize downtime and ensure continuous operation.</p>
+            
+            <h3>High Availability Concepts</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Concept</th>
+                        <th>Description</th>
+                        <th>Implementation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Fault Tolerance</strong></td>
+                        <td>System continues operating despite component failures</td>
+                        <td>RAID, redundant power supplies, clustered systems</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Load Balancing</strong></td>
+                        <td>Distributes workload across multiple systems</td>
+                        <td>Load balancers, DNS round-robin, cloud scaling</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Failover</strong></td>
+                        <td>Automatic switching to backup systems</td>
+                        <td>Database replication, hot/warm/cold sites</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Redundancy</strong></td>
+                        <td>Duplicate critical components</td>
+                        <td>Multiple internet connections, backup generators</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Disaster Recovery Planning</h3>
+            <ul>
+                <li><strong>Recovery Time Objective (RTO):</strong> Maximum acceptable downtime</li>
+                <li><strong>Recovery Point Objective (RPO):</strong> Maximum acceptable data loss</li>
+                <li><strong>Business Impact Analysis (BIA):</strong> Identifies critical systems and processes</li>
+            </ul>
+            
+            <h3>Backup Strategies</h3>
+            <ul>
+                <li><strong>Full Backup:</strong> Complete copy of all data
+                    <ul>
+                        <li>Pros: Fastest restore, complete recovery</li>
+                        <li>Cons: Slow backup, high storage requirements</li>
+                    </ul>
+                </li>
+                <li><strong>Incremental Backup:</strong> Only changed data since last backup
+                    <ul>
+                        <li>Pros: Fast backup, efficient storage</li>
+                        <li>Cons: Slower restore, requires all increments</li>
+                    </ul>
+                </li>
+                <li><strong>Differential Backup:</strong> Changed data since last full backup
+                    <ul>
+                        <li>Pros: Faster restore than incremental</li>
+                        <li>Cons: Larger backup size than incremental</li>
+                    </ul>
+                </li>
+                <li><strong>3-2-1 Backup Rule:</strong>
+                    <ul>
+                        <li>3 copies of data</li>
+                        <li>2 different media types</li>
+                        <li>1 copy offsite</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <h3>Recovery Sites</h3>
+            <ul>
+                <li><strong>Hot Site:</strong> Fully operational, ready immediately
+                    <ul>
+                        <li>Cost: High</li>
+                        <li>Recovery Time: Minutes to hours</li>
+                    </ul>
+                </li>
+                <li><strong>Warm Site:</strong> Partially configured, requires setup
+                    <ul>
+                        <li>Cost: Medium</li>
+                        <li>Recovery Time: Hours to days</li>
+                    </ul>
+                </li>
+                <li><strong>Cold Site:</strong> Basic infrastructure only
+                    <ul>
+                        <li>Cost: Low</li>
+                        <li>Recovery Time: Days to weeks</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="important">
+                <strong>Testing is Critical</strong>
+                <p>Regular testing of backup and recovery procedures is essential. Many organizations discover their backups are incomplete or corrupted only during actual recovery attempts.</p>
+            </div>
+
+            <div class="section-nav">
+                <button onclick="showSection(2)">← Previous</button>
+                <button onclick="showSection(4)">Next →</button>
+            </div>
+        </div>
+
+        <!-- Section 4: 3.4 Embedded Systems & IoT -->
+        <div class="section" id="section-4">
+            <button class="mark-complete-btn" onclick="toggleComplete(4)">Mark as Complete</button>
+            <h2>3.4 Embedded Systems & IoT Security</h2>
+            
+            <p>Embedded systems and Internet of Things (IoT) devices present unique security challenges due to their specialized nature, limited resources, and widespread deployment.</p>
+            
+            <h3>Embedded System Categories</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Examples</th>
+                        <th>Security Concerns</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>IoT Devices</strong></td>
+                        <td>Smart home devices, wearables</td>
+                        <td>Weak authentication, unencrypted communication</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SCADA/ICS</strong></td>
+                        <td>Industrial control systems</td>
+                        <td>Legacy protocols, air-gap assumptions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Medical Devices</strong></td>
+                        <td>Pacemakers, insulin pumps</td>
+                        <td>Life-safety implications, FDA regulations</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vehicles</strong></td>
+                        <td>Automotive systems, aircraft</td>
+                        <td>CAN bus vulnerabilities, remote access</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Building Automation</strong></td>
+                        <td>HVAC, access control, lighting</td>
+                        <td>Physical security implications</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Common Embedded System Vulnerabilities</h3>
+            <ul>
+                <li><strong>Default Credentials:</strong> Many devices ship with well-known default passwords</li>
+                <li><strong>Lack of Update Mechanisms:</strong> No way to patch discovered vulnerabilities</li>
+                <li><strong>Insecure Communication:</strong> Unencrypted data transmission</li>
+                <li><strong>Hardware Backdoors:</strong> Undocumented access methods</li>
+                <li><strong>Resource Constraints:</strong> Limited processing power prevents strong encryption</li>
+                <li><strong>Physical Access:</strong> Devices often deployed in unsecured locations</li>
+            </ul>
+            
+            <h3>Security Controls for Embedded Systems</h3>
+            <ul>
+                <li><strong>Network Segmentation:</strong> Isolate embedded systems on separate VLANs</li>
+                <li><strong>Access Control:</strong> Change default credentials, implement least privilege</li>
+                <li><strong>Monitoring:</strong> Specialized monitoring for unusual device behavior</li>
+                <li><strong>Physical Security:</strong> Secure device locations, tamper detection</li>
+                <li><strong>Supply Chain Security:</strong> Verify device integrity before deployment</li>
+                <li><strong>Lifecycle Management:</strong> Plan for device replacement and disposal</li>
+            </ul>
+            
+            <h3>Operational Technology (OT) Security</h3>
+            <p>Special considerations for industrial control systems:</p>
+            <ul>
+                <li><strong>Safety First:</strong> Security measures must not compromise safety systems</li>
+                <li><strong>Availability Critical:</strong> Downtime can cause physical damage or production loss</li>
+                <li><strong>Legacy Systems:</strong> Many systems cannot be easily updated or replaced</li>
+                <li><strong>Air Gap Limitations:</strong> Assumed air gaps often don't exist in practice</li>
+                <li><strong>Protocol Security:</strong> Industrial protocols (Modbus, DNP3) lack security features</li>
+            </ul>
+
+            <div class="exam-tip">
+                <strong>Exam Tip</strong>
+                <p>Be familiar with the unique security challenges of embedded systems and IoT devices. Questions often focus on segmentation, default credentials, and the inability to apply patches.</p>
+            </div>
+
+            <div class="note">
+                <strong>💡 Emerging Trend</strong>
+                <p>The convergence of IT and OT networks is creating new security challenges. Understanding both domains is increasingly important for security professionals.</p>
+            </div>
+
+            <div class="section-nav">
+                <button onclick="showSection(3)">← Previous</button>
+                <button disabled>Next →</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

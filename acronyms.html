@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security+ SY0-701 Acronyms</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #2d2d2d;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .home-btn {
+            background: #e74c3c;
+            color: white;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .home-btn:hover {
+            background: #c0392b;
+        }
+
+        .acronyms-content {
+            padding: 2rem;
+        }
+
+        .letter-section {
+            margin-bottom: 3rem;
+        }
+
+        .letter-header {
+            color: #81c784;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #81c784;
+        }
+
+        .acronym-item {
+            background: #3a3a3a;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .acronym-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+
+        .acronym-name {
+            color: #64b5f6;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .acronym-definition {
+            color: #bdc3c7;
+            line-height: 1.6;
+        }
+
+        .acronym-full-form {
+            color: #e67e22;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .acronyms-content {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .letter-header {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Security+ SY0-701 Study Guide</h1>
+            <p class="subtitle">Complete Acronyms List</p>
+            <a href="./index.html" class="home-btn">🏠 Study Hub</a>
+        </header>
+
+        <div class="acronyms-content" id="acronymsContent">
+            <!-- Acronyms content will be inserted here by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        const acronyms = {
+            'A': [
+                { acronym: 'AAA', fullForm: 'Authentication, Authorization, and Accounting', definition: 'Framework for controlling access to resources, enforcing policies, and auditing usage.' },
+                { acronym: 'ACL', fullForm: 'Access Control List', definition: 'List of permissions attached to an object specifying which users or system processes can access it.' },
+                { acronym: 'AES', fullForm: 'Advanced Encryption Standard', definition: 'Symmetric encryption algorithm widely used to secure sensitive data.' },
+                { acronym: 'APT', fullForm: 'Advanced Persistent Threat', definition: 'Prolonged and targeted cyberattack where an intruder gains unauthorized access and remains undetected.' },
+                { acronym: 'API', fullForm: 'Application Programming Interface', definition: 'Set of protocols and tools for building software applications.' }
+            ],
+            'B': [
+                { acronym: 'BCP', fullForm: 'Business Continuity Planning', definition: 'Process of creating systems to prevent and recover from potential threats to a company.' },
+                { acronym: 'BIA', fullForm: 'Business Impact Analysis', definition: 'Process identifying critical business functions and the impact of their disruption.' },
+                { acronym: 'BYOD', fullForm: 'Bring Your Own Device', definition: 'Policy allowing employees to use personal devices for work purposes.' }
+            ],
+            'C': [
+                { acronym: 'CA', fullForm: 'Certificate Authority', definition: 'Trusted entity that issues digital certificates to verify identities on the internet.' },
+                { acronym: 'CASB', fullForm: 'Cloud Access Security Broker', definition: 'Security policy enforcement point between cloud service consumers and providers.' },
+                { acronym: 'C2', fullForm: 'Command and Control', definition: 'Infrastructure used by attackers to communicate with compromised systems.' }
+            ],
+            'D': [
+                { acronym: 'DDoS', fullForm: 'Distributed Denial of Service', definition: 'DoS attack using multiple compromised systems to flood a target.' },
+                { acronym: 'DLP', fullForm: 'Data Loss Prevention', definition: 'Strategy and tools to prevent sensitive data from leaving the organization.' },
+                { acronym: 'DMZ', fullForm: 'Demilitarized Zone', definition: 'Physical or logical subnet separating an internal network from untrusted networks.' },
+                { acronym: 'DNS', fullForm: 'Domain Name System', definition: 'Hierarchical naming system that translates domain names to IP addresses.' },
+                { acronym: 'DR', fullForm: 'Disaster Recovery', definition: 'Strategies and procedures for recovering IT infrastructure after a disaster.' }
+            ],
+            'E': [
+                { acronym: 'EDR', fullForm: 'Endpoint Detection and Response', definition: 'Integrated endpoint security solution combining real-time monitoring and response.' },
+                { acronym: 'EAP', fullForm: 'Extensible Authentication Protocol', definition: 'Authentication framework frequently used in wireless networks.' }
+            ],
+            'F': [
+                { acronym: 'FIM', fullForm: 'File Integrity Monitoring', definition: 'Technology validating the integrity of operating system and application files.' }
+            ],
+            'H': [
+                { acronym: 'HIDS', fullForm: 'Host-Based Intrusion Detection System', definition: 'System monitoring a single host for suspicious activity.' },
+                { acronym: 'HIPS', fullForm: 'Host-Based Intrusion Prevention System', definition: 'System that monitors and blocks suspicious activity on a single host.' },
+                { acronym: 'HSM', fullForm: 'Hardware Security Module', definition: 'Physical computing device that safeguards and manages digital keys.' }
+            ],
+            'I': [
+                { acronym: 'IAM', fullForm: 'Identity and Access Management', definition: 'Framework of policies and technologies ensuring appropriate access to resources.' },
+                { acronym: 'ICS', fullForm: 'Industrial Control System', definition: 'Control system managing industrial processes.' },
+                { acronym: 'IDS', fullForm: 'Intrusion Detection System', definition: 'Device or software monitoring network traffic for suspicious activity.' },
+                { acronym: 'IoT', fullForm: 'Internet of Things', definition: 'Network of physical devices embedded with sensors and software connecting and exchanging data.' },
+                { acronym: 'IPS', fullForm: 'Intrusion Prevention System', definition: 'Network security tool monitoring traffic for malicious activity and taking action.' },
+                { acronym: 'IP', fullForm: 'Internet Protocol', definition: 'Principal communications protocol for relaying datagrams across network boundaries.' }
+            ],
+            'L': [
+                { acronym: 'LDAP', fullForm: 'Lightweight Directory Access Protocol', definition: 'Protocol for accessing and maintaining distributed directory information services.' }
+            ],
+            'M': [
+                { acronym: 'MDM', fullForm: 'Mobile Device Management', definition: 'Software securing, monitoring, and managing mobile devices.' },
+                { acronym: 'MFA', fullForm: 'Multi-Factor Authentication', definition: 'Authentication method requiring two or more verification factors.' },
+                { acronym: 'MitM', fullForm: 'Man-in-the-Middle', definition: 'Attack where attacker intercepts communication between two parties.' }
+            ],
+            'N': [
+                { acronym: 'NAC', fullForm: 'Network Access Control', definition: 'Approach to security controlling access to network resources.' },
+                { acronym: 'NAT', fullForm: 'Network Address Translation', definition: 'Method remapping IP address space by modifying network address information.' },
+                { acronym: 'NGFW', fullForm: 'Next-Generation Firewall', definition: 'Advanced firewall combining traditional firewall with additional security functions.' },
+                { acronym: 'NIDS', fullForm: 'Network Intrusion Detection System', definition: 'System that monitors network traffic for suspicious activity.' },
+                { acronym: 'NIPS', fullForm: 'Network Intrusion Prevention System', definition: 'System that monitors and blocks suspicious network traffic.' }
+            ],
+            'O': [
+                { acronym: 'OT', fullForm: 'Operational Technology', definition: 'Hardware and software monitoring and controlling physical devices and processes.' },
+                { acronym: 'OS', fullForm: 'Operating System', definition: 'Software managing computer hardware and software resources.' }
+            ],
+            'P': [
+                { acronym: 'PKI', fullForm: 'Public Key Infrastructure', definition: 'Set of roles, policies, and procedures managing digital certificates.' },
+                { acronym: 'PII', fullForm: 'Personally Identifiable Information', definition: 'Any data that could potentially identify a specific individual.' }
+            ],
+            'R': [
+                { acronym: 'RAT', fullForm: 'Remote Access Trojan', definition: 'Malware providing backdoor for administrative control.' },
+                { acronym: 'RBAC', fullForm: 'Role-Based Access Control', definition: 'Method restricting system access based on user roles.' },
+                { acronym: 'RPO', fullForm: 'Recovery Point Objective', definition: 'Maximum acceptable amount of data loss measured in time.' },
+                { acronym: 'RTO', fullForm: 'Recovery Time Objective', definition: 'Maximum acceptable time to restore system after disruption.' }
+            ],
+            'S': [
+                { acronym: 'SCADA', fullForm: 'Supervisory Control and Data Acquisition', definition: 'Control system architecture for high-level supervisory management.' },
+                { acronym: 'SIEM', fullForm: 'Security Information and Event Management', definition: 'Software providing real-time analysis of security alerts.' },
+                { acronym: 'SOC', fullForm: 'Security Operations Center', definition: 'Centralized unit dealing with security issues.' },
+                { acronym: 'SSO', fullForm: 'Single Sign-On', definition: 'Authentication process allowing users to access multiple applications with one set of credentials.' },
+                { acronym: 'SSL', fullForm: 'Secure Sockets Layer', definition: 'Cryptographic protocol providing secure communications over networks.' }
+            ],
+            'T': [
+                { acronym: 'TLS', fullForm: 'Transport Layer Security', definition: 'Cryptographic protocol providing secure communications over networks.' },
+                { acronym: 'TOTP', fullForm: 'Time-based One-Time Password', definition: 'Temporary passcode generated for authentication purposes.' }
+            ],
+            'U': [
+                { acronym: 'UAC', fullForm: 'User Account Control', definition: 'Security feature preventing unauthorized changes to the operating system.' },
+                { acronym: 'UTM', fullForm: 'Unified Threat Management', definition: 'Comprehensive security solution combining multiple security features.' }
+            ],
+            'V': [
+                { acronym: 'VLAN', fullForm: 'Virtual Local Area Network', definition: 'Logical grouping of network devices on the same physical network.' },
+                { acronym: 'VM', fullForm: 'Virtual Machine', definition: 'Emulation of a computer system providing functionality of a physical computer.' },
+                { acronym: 'VPN', fullForm: 'Virtual Private Network', definition: 'Encrypted connection over the internet from device to network.' }
+            ],
+            'W': [
+                { acronym: 'WAF', fullForm: 'Web Application Firewall', definition: 'Firewall specifically designed to protect web applications.' },
+                { acronym: 'WEP', fullForm: 'Wired Equivalent Privacy', definition: 'Security algorithm for IEEE 802.11 wireless networks.' },
+                { acronym: 'WPA', fullForm: 'Wi-Fi Protected Access', definition: 'Security protocol and security certification program for wireless networks.' }
+            ],
+            'X': [
+                { acronym: 'XDR', fullForm: 'Extended Detection and Response', definition: 'Unified security platform providing detection and response across multiple security layers.' },
+                { acronym: 'XSS', fullForm: 'Cross-Site Scripting', definition: 'Security vulnerability allowing attackers to inject malicious scripts into web pages.' }
+            ]
+        };
+
+        function renderAcronyms() {
+            const content = document.getElementById('acronymsContent');
+            
+            // Render all acronyms
+            Object.keys(acronyms).forEach(letter => {
+                const section = document.createElement('div');
+                section.className = 'letter-section';
+                section.id = `letter-${letter}`;
+                
+                const header = document.createElement('div');
+                header.className = 'letter-header';
+                header.textContent = letter;
+                section.appendChild(header);
+                
+                acronyms[letter].forEach(item => {
+                    const acronymDiv = document.createElement('div');
+                    acronymDiv.className = 'acronym-item';
+                    
+                    const acronymName = document.createElement('div');
+                    acronymName.className = 'acronym-name';
+                    acronymName.textContent = item.acronym;
+                    
+                    const acronymFullForm = document.createElement('div');
+                    acronymFullForm.className = 'acronym-full-form';
+                    acronymFullForm.textContent = item.fullForm;
+                    
+                    const acronymDef = document.createElement('div');
+                    acronymDef.className = 'acronym-definition';
+                    acronymDef.textContent = item.definition;
+                    
+                    acronymDiv.appendChild(acronymName);
+                    acronymDiv.appendChild(acronymFullForm);
+                    acronymDiv.appendChild(acronymDef);
+                    section.appendChild(acronymDiv);
+                });
+                
+                content.appendChild(section);
+            });
+        }
+
+        // Initialize the acronyms when the page loads
+        document.addEventListener('DOMContentLoaded', renderAcronyms);
+    </script>
+</body>
+</html>
